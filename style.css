@@ -4,7 +4,7 @@
 
 :root {
   /* Royal Khmer Color Palette */
-  --bg-primary: #12090c;
+  --bg-primary: #230f17;
   --bg-secondary: #1e0d13;
   --bg-card: rgba(35, 15, 23, 0.75);
   --bg-card-hover: rgba(50, 20, 32, 0.9);
@@ -35,11 +35,11 @@
   --surface-glass: rgba(255, 255, 255, 0.04);
   --surface-border: rgba(212, 175, 55, 0.35);
 
-  /* Typography - Koh Santepheap for royal titles & Kantumruy Pro for clean body */
-  --font-royal: 'Koh Santepheap', 'Kantumruy Pro', sans-serif;
-  --font-body: 'Kantumruy Pro', system-ui, -apple-system, sans-serif;
+  /* Typography - Kantumruy Pro for all elements */
+  --font-royal: 'Kantumruy Pro', sans-serif;
+  --font-body: 'Kantumruy Pro', sans-serif;
   --font-khmer-sub: 'Kantumruy Pro', sans-serif;
-  --font-display-en: 'Playfair Display', serif;
+  --font-display-en: 'Kantumruy Pro', sans-serif;
 
   /* Elevations & Shadows */
   --shadow-gold-glow: 0 0 25px rgba(212, 175, 55, 0.35);
@@ -69,9 +69,16 @@ html {
   scroll-padding-top: 4.5rem;
 }
 
-body {
+body,
+button,
+input,
+select,
+textarea {
   font-family: var(--font-body);
-  background-color: #5c0423;
+}
+
+body {
+  background-color: #230f17;
   color: var(--cream-100);
   line-height: 1.7;
   overflow-x: hidden;
@@ -2228,7 +2235,7 @@ a {
 }
 
 .modal-photo-counter {
-  font-family: 'Playfair Display', var(--font-royal), serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 700;
   color: #fff2a3;
