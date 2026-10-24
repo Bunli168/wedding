@@ -132,16 +132,12 @@ function initFrameSwiper() {
       delay: 5000,
       disableOnInteraction: false,
       pauseOnMouseEnter: true
-    },
-    pagination: {
-      el: '#framePagination',
-      clickable: true
     }
   });
 }
 
 /* ==========================================================================
-   4. Floating Lotus Petals & Gold Sparkle Canvas
+   4. Floating Traditional Khmer Plumeria (ផ្កាចំប៉ី/ផ្កាចម្ប៉ា) & Gold Sparkle Canvas
    ========================================================================== */
 function initParticlesCanvas() {
   const canvas = document.getElementById('particlesCanvas');
@@ -156,63 +152,95 @@ function initParticlesCanvas() {
     height = canvas.height = window.innerHeight;
   });
 
-  const particlesCount = 28;
+  // Preload authentic Khmer flower blossoms from user image
+  const flowerSources = [
+    'assets/images/flower_blossom_1.png',
+    'assets/images/flower_blossom_2.png',
+    'assets/images/flower_blossom_3.png',
+    'assets/images/flower_cluster.png'
+  ];
+
+  const flowerImgs = flowerSources.map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+  });
+
+  const isMobile = window.innerWidth <= 768;
+  const particlesCount = isMobile ? 22 : 36;
   const particles = [];
 
-  class LotusPetalParticle {
+  class KhmerFlowerParticle {
     constructor() {
-      this.reset();
+      this.reset(true);
     }
 
-    reset() {
+    reset(initial = false) {
       this.x = Math.random() * width;
-      this.y = -20 - Math.random() * 50;
-      this.size = 12 + Math.random() * 14;
-      this.speedY = 0.6 + Math.random() * 1.2;
-      this.speedX = Math.sin(Math.random() * Math.PI * 2) * 0.8;
-      this.rotation = Math.random() * Math.PI * 2;
-      this.rotationSpeed = (Math.random() - 0.5) * 0.02;
-      this.opacity = 0.25 + Math.random() * 0.45;
-      this.isGoldSparkle = Math.random() > 0.65;
+      this.y = initial ? Math.random() * height : -40 - Math.random() * 50;
+      this.isGoldSparkle = Math.random() < 0.25; // 25% royal golden sparkle, 75% Khmer flower blossoms
+
+      if (this.isGoldSparkle) {
+        this.size = 2 + Math.random() * 3.5;
+        this.speedY = 0.5 + Math.random() * 0.9;
+        this.speedX = (Math.random() - 0.5) * 0.6;
+        this.opacity = 0.4 + Math.random() * 0.5;
+        this.twinkleSpeed = 0.03 + Math.random() * 0.04;
+        this.twinklePhase = Math.random() * Math.PI * 2;
+      } else {
+        // Khmer Plumeria Flower Blossom (ផ្កាចំប៉ី/ផ្កាចម្ប៉ា)
+        // 90% single blossoms, 10% small cluster
+        const isCluster = Math.random() < 0.12;
+        this.img = isCluster ? flowerImgs[3] : flowerImgs[Math.floor(Math.random() * 3)];
+        
+        const baseSize = isMobile ? 18 : 24;
+        this.size = baseSize + Math.random() * (isCluster ? 28 : 20);
+        this.speedY = 0.6 + Math.random() * 0.9;
+        this.swaySpeed = 0.008 + Math.random() * 0.014;
+        this.swayAmp = 0.7 + Math.random() * 1.1;
+        this.swayPhase = Math.random() * Math.PI * 2;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.016;
+        this.opacity = 0.75 + Math.random() * 0.22;
+      }
     }
 
     update() {
-      this.y += this.speedY;
-      this.x += Math.sin(this.y * 0.01) * 0.6 + this.speedX;
-      this.rotation += this.rotationSpeed;
+      if (this.isGoldSparkle) {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        this.twinklePhase += this.twinkleSpeed;
+      } else {
+        this.y += this.speedY;
+        this.x += Math.sin(this.y * 0.009 + this.swayPhase) * this.swayAmp;
+        this.rotation += this.rotationSpeed;
+      }
 
-      if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
-        this.reset();
+      if (this.y > height + 50 || this.x < -50 || this.x > width + 50) {
+        this.reset(false);
       }
     }
 
     draw() {
       ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.rotation);
-      ctx.globalAlpha = this.opacity;
 
       if (this.isGoldSparkle) {
-        // Gold stardust twinkle
+        const curOpacity = this.opacity * (0.6 + 0.4 * Math.sin(this.twinklePhase));
+        ctx.globalAlpha = Math.max(0, Math.min(1, curOpacity));
+        ctx.translate(this.x, this.y);
         ctx.fillStyle = '#fde047';
         ctx.shadowColor = '#d4af37';
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 6;
         ctx.beginPath();
-        ctx.arc(0, 0, this.size * 0.25, 0, Math.PI * 2);
+        ctx.arc(0, 0, this.size, 0, Math.PI * 2);
         ctx.fill();
       } else {
-        // Delicate pink & gold lotus petal
-        const gradient = ctx.createRadialGradient(0, 0, 1, 0, 0, this.size);
-        gradient.addColorStop(0, '#fbcfe8');
-        gradient.addColorStop(0.6, '#f472b6');
-        gradient.addColorStop(1, '#d4af37');
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.moveTo(0, -this.size * 0.8);
-        ctx.quadraticCurveTo(this.size * 0.5, 0, 0, this.size * 0.8);
-        ctx.quadraticCurveTo(-this.size * 0.5, 0, 0, -this.size * 0.8);
-        ctx.fill();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        ctx.globalAlpha = this.opacity;
+        if (this.img && this.img.complete && this.img.naturalWidth > 0) {
+          ctx.drawImage(this.img, -this.size / 2, -this.size / 2, this.size, this.size);
+        }
       }
 
       ctx.restore();
@@ -220,9 +248,7 @@ function initParticlesCanvas() {
   }
 
   for (let i = 0; i < particlesCount; i++) {
-    const p = new LotusPetalParticle();
-    p.y = Math.random() * height; // Spread initially
-    particles.push(p);
+    particles.push(new KhmerFlowerParticle());
   }
 
   function animate() {
