@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="style.css?v=6.1">
+  <link rel="stylesheet" href="style.css?v=6.6">
 </head>
 
 <body class="envelope-active">
@@ -85,12 +85,14 @@
           </div>
         </div>
 
-        <!-- Pulsing Open Envelope Button Centered Directly in the Ornate Frame Banner -->
+        <!-- Open Envelope Button using button.jpg with centered gold text -->
         <div class="env-action-wrap">
-          <button class="btn-open-envelope" id="btnOpenEnvelope" aria-label="បើកសំបុត្រអាពាហ៍ពិពាហ៍">
-            <span class="env-btn-icon">💌</span>
-            <span class="env-btn-text">បើកសំបុត្រ (Open)</span>
-            <span class="env-btn-shine"></span>
+          <button class="btn-open-envelope-img" id="btnOpenEnvelope" aria-label="បើកសំបុត្រអាពាហ៍ពិពាហ៍">
+            <img src="assets/images/button.jpg" alt="បើកសំបុត្រ" class="img-btn-envelope">
+            <span class="btn-img-text-overlay">
+              <span class="btn-text-icon">💌</span>
+              <span class="btn-text-khmer">បើកសំបុត្រ (Open)</span>
+            </span>
           </button>
         </div>
       </div>
@@ -260,18 +262,17 @@
                 <!-- Slide 1 -->
                 <div class="swiper-slide frame-slide" data-slide="0">
                   <img src="assets/images/couple_real_1.jpg" alt="រូបគូស្នេហ៍ ខាន់ ឃា &amp; សែម កញ្ញា"
-                    class="master-couple-image" style="object-position: center 29%;">
+                    class="master-couple-image" style="object-position: center 12%;">
                 </div>
-
 
                 <!-- Slide 4 -->
                 <div class="swiper-slide frame-slide" data-slide="3">
-                  <img src="assets/images/couple_real_4.jpg" alt="ក្តីស្រឡាញ់ផ្អែមល្ហែម" class="master-couple-image">
+                  <img src="assets/images/couple_real_4.jpg" alt="ក្តីស្រឡាញ់ផ្អែមល្ហែម" class="master-couple-image" style="object-position: center 6%;">
                 </div>
 
                 <!-- Slide 7 -->
                 <div class="swiper-slide frame-slide" data-slide="6">
-                  <img src="assets/images/couple_real_7.jpg" alt="ស្នាមញញឹមរំភើប" class="master-couple-image">
+                  <img src="assets/images/couple_real_7.jpg" alt="ស្នាមញញឹមរំភើប" class="master-couple-image" style="object-position: center 10%;">
                 </div>
 
 
@@ -655,11 +656,7 @@
     </div>
   </footer>
 
-  <!-- Floating Install Button (ប៊ូតុងដំឡើងលើអេក្រង់ទូរស័ព្ទអណ្តែតលើអេក្រង់) -->
-  <button id="pwaInstallBtn" class="floating-install-btn" aria-label="Add to Home Screen" title="ដំឡើងលើ Homescreen">
-    <span class="install-btn-icon">📲</span>
-    <span class="install-btn-label">ដាក់លើអេក្រង់</span>
-  </button>
+
 
   <!-- Floating Traditional Music Button (ប៊ូតុងចាក់/បិទភ្លេងការអណ្តែតលើអេក្រង់) -->
   <button id="musicToggleBtn" class="floating-music-btn" aria-label="Toggle Traditional Music" title="បិទ/ចាក់ភ្លេងការ">
@@ -700,7 +697,7 @@
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js?v=4.0"></script>
+  <script src="script.js?v=4.2"></script>
 
 </body>
 
