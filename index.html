@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>សិរីសួស្តី អាពាហ៍ពិពាហ៍ | ឃា & កញ្ញា - Khea & Kanha Wedding</title>
+  <meta name="description" content="គេហទំព័រមង្គលការបែបប្រពៃណីខ្មែរ រៀបចំឡើងដោយក្តីស្រឡាញ់ របស់គូស្នេហ៍ ខាន់ ឃា & សែម កញ្ញា ជាមួយស៊ុមក្បាច់ខ្មែរដ៏ប្រណិត">
+  
+  <!-- Google Fonts: Koh Santepheap for royal titles, Kantumruy Pro for clean body, Playfair Display for numbers/accents -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@400;600;700;800;900&family=Kantumruy+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  
+  <link rel="stylesheet" href="style.css?v=2.4">
+</head>
+<body class="envelope-active">
+
+  <!-- Wedding Envelope Opening Screen (Landing Screen) -->
+  <div class="wedding-envelope-overlay" id="envelopeOverlay">
+    <div class="envelope-ambient-bg"></div>
+
+    <div class="envelope-card-container" id="envelopeCardContainer">
+      <!-- Ornate Gold Wax Seal -->
+      <div class="wax-seal-badge" id="waxSeal">
+        <span class="wax-seal-icon">⚜️</span>
+      </div>
+
+      <!-- Envelope Paper Card with Khmer Borders -->
+      <div class="envelope-card">
+        <!-- Khmer Floral Corners -->
+        <div class="env-corner tl"></div>
+        <div class="env-corner tr"></div>
+        <div class="env-corner bl"></div>
+        <div class="env-corner br"></div>
+
+        <div class="env-inner-border">
+          <div class="env-top-motif">
+            <span class="motif-line"></span>
+            <span class="motif-gem">❖</span>
+            <span class="motif-line"></span>
+          </div>
+
+          <div class="env-invitation-heading">
+            <span class="env-royal-badge">លិខិតអញ្ជើញសិរីមង្គលអាពាហ៍ពិពាហ៍</span>
+            <span class="env-en-sub">WEDDING INVITATION</span>
+          </div>
+
+          <div class="env-couple-monogram">ឃ &bull; ក</div>
+
+          <h2 class="env-couple-title">
+            <span class="env-name">ខាន់ ឃា</span>
+            <span class="env-and">&amp;</span>
+            <span class="env-name">សែម កញ្ញា</span>
+          </h2>
+          <p class="env-en-names">KHANH KHEA &bull; SEM KANHA</p>
+
+          <p class="env-invitation-text">
+            សូមគោរពអញ្ជើញ ឯកឧត្តម លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា ចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស
+          </p>
+
+          <div class="env-date-pill">
+            <span>🗓️ ថ្ងៃសុក្រ ទី១៩ ខែកុម្ភៈ ឆ្នាំ២០២៧</span>
+          </div>
+
+          <!-- Pulsing Open Envelope Button -->
+          <div class="env-action-wrap">
+            <button class="btn-open-envelope" id="btnOpenEnvelope" aria-label="បើកសំបុត្រអាពាហ៍ពិពាហ៍">
+              <span class="env-btn-icon">💌</span>
+              <span class="env-btn-text">បើកសំបុត្រ (Open)</span>
+              <span class="env-btn-shine"></span>
+            </button>
+            <p class="env-music-hint">🎶 ចុចដើម្បីបើកសំបុត្រ និងចាក់បទភ្លេងការដោយស្វ័យប្រវត្តិ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Header Removed per user request ('កុំheaderអី') -->
+
+  <!-- Real Audio Element for Traditional Khmer Wedding Song (សូរិយាលិចហើយ - សុត សាវុធ) -->
+  <audio id="weddingAudio" src="assets/audio/wedding_music.m4a" preload="auto" loop></audio>
+
+
+
+  <!-- Ambient Lotus Canvas for Canvas-based Gold Petals -->
+  <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+
+  <!-- Hero Section with Swiper Slider -->
+  <section class="hero-section" id="hero">
+    <!-- Swiper Container for Background Slides (Real Couple Photos) -->
+    <div class="swiper hero-swiper" id="heroSwiper">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <div class="slide-bg" style="background-image: url('assets/images/hero_photo.jpg');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption-badge">
+            <span class="slide-tag">✨ រូបថតមង្គលការពេញតួ ឃា &bull; កញ្ញា</span>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <div class="slide-bg" style="background-image: url('assets/images/couple_real_1.jpg');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption-badge">
+            <span class="slide-tag">👑 ស្នាមញញឹមនៃក្តីស្រឡាញ់ដ៏បរិសុទ្ធ</span>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <div class="slide-bg" style="background-image: url('assets/images/couple_real_2.jpg');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption-badge">
+            <span class="slide-tag">🌸 គ្រាដ៏មានអត្ថន័យនៃគូជីវិត</span>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide">
+          <div class="slide-bg" style="background-image: url('assets/images/couple_real_4.jpg');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption-badge">
+            <span class="slide-tag">💖 អនុស្សាវរីយ៍ផ្អែមល្ហែម ឃា &amp; កញ្ញា</span>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="swiper-slide">
+          <div class="slide-bg" style="background-image: url('assets/images/couple_real_5.jpg');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption-badge">
+            <span class="slide-tag">🌿 ក្តីស្រឡាញ់ជារៀងរហូត</span>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="swiper-slide">
+          <div class="slide-bg" style="background-image: url('assets/images/couple_real_6.jpg');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption-badge">
+            <span class="slide-tag">💍 ចំណងនិស្ស័យគូព្រេងព្រលឹង</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swiper Navigation Arrows with Khmer Gold Styling -->
+      <button class="swiper-button-prev hero-swiper-btn" aria-label="Previous Slide">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="swiper-button-next hero-swiper-btn" aria-label="Next Slide">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Swiper Pagination Bullets -->
+      <div class="swiper-pagination hero-swiper-pagination"></div>
+
+      <!-- Slide Indicator Counter -->
+      <div class="hero-slide-counter">
+        <span class="current-slide" id="currentSlideNum">01</span>
+        <span class="counter-sep">/</span>
+        <span class="total-slides">06</span>
+      </div>
+    </div>
+
+    <!-- Hero Content in a Grand Khmer Royal Glass Card -->
+    <div class="hero-content">
+      <div class="hero-center-info">
+        <!-- Top Royal Ribbon Badge -->
+        <div class="hero-header-badge">
+          <span class="badge-gem">⚜️</span>
+          <span class="royal-text">សិរីសួស្តី អាពាហ៍ពិពាហ៍</span>
+          <span class="badge-gem">⚜️</span>
+        </div>
+
+        <!-- Couple Names with clean Koh Santepheap typography & gold glow -->
+        <h1 class="couple-hero-title">
+          <span class="name-groom">ខាន់ ឃា</span>
+          <span class="heart-separator">❤</span>
+          <span class="name-bride">សែម កញ្ញា</span>
+        </h1>
+
+        <p class="hero-en-names">KHANH KHEA &bull; SEM KANHA</p>
+
+        <!-- Elegant Solar & Lunar Wedding Date -->
+        <div class="hero-date-badge">
+          <span class="date-icon">🗓️</span>
+          <span class="date-khmer">ថ្ងៃសុក្រ ទី១៩ ខែកុម្ភៈ ឆ្នាំ២០២៧</span>
+          <span class="date-sep">&bull;</span>
+          <span class="date-en">FEB 19, 2027</span>
+        </div>
+      </div>
+
+      <!-- Bottom Floating Countdown & Scroll Prompt -->
+      <div class="hero-bottom-dock">
+        <!-- Live Countdown Timer -->
+        <div class="countdown-container" id="countdown">
+          <div class="countdown-unit">
+            <span class="count-num" id="daysCount">00</span>
+            <span class="count-label">ថ្ងៃ</span>
+          </div>
+          <span class="count-divider">:</span>
+          <div class="countdown-unit">
+            <span class="count-num" id="hoursCount">00</span>
+            <span class="count-label">ម៉ោង</span>
+          </div>
+          <span class="count-divider">:</span>
+          <div class="countdown-unit">
+            <span class="count-num" id="minutesCount">00</span>
+            <span class="count-label">នាទី</span>
+          </div>
+          <span class="count-divider">:</span>
+          <div class="countdown-unit">
+            <span class="count-num" id="secondsCount">00</span>
+            <span class="count-label">វិនាទី</span>
+          </div>
+        </div>
+
+        <!-- Minimal Smooth Scroll Prompt -->
+        <a href="#frames" class="hero-scroll-pill">
+          <span>ទស្សនាស៊ុមរូបថត</span>
+          <span class="arrow-bounce">▼</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Khmer Frame & Couple Showcase Section -->
+  <section class="khmer-frame-showcase-section" id="frames">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <div class="kbach-divider-center">
+          <span class="kbach-wing left"></span>
+          <span class="kbach-gem">❖</span>
+          <span class="kbach-wing right"></span>
+        </div>
+        <h2 class="section-title">ស៊ុមរូបថតប្រពៃណីខ្មែរ</h2>
+        <p class="section-subtitle">Khmer Royal Ornate Frame & Couple Showcase</p>
+        <p class="section-desc">
+          កម្រងរូបភាពអនុស្សាវរីយ៍ដ៏មានតម្លៃរបស់គូស្នេហ៍ ខាន់ ឃា និង សែម កញ្ញា ក្នុងស៊ុមផ្កាឈូកសិរីមង្គល
+        </p>
+      </div>
+
+      <!-- Main Framed Couple Presentation Display -->
+      <div class="framed-couple-stage">
+        
+        <!-- The Ornate Khmer Lotus Grace Frame Container -->
+        <div class="khmer-ornate-master-frame lotus-grace" id="masterKhmerFrame">
+          
+          <!-- Outer Khmer Kbach Decorative Border Elements -->
+          <div class="kbach-corner top-left"></div>
+          <div class="kbach-corner top-right"></div>
+          <div class="kbach-corner bottom-left"></div>
+          <div class="kbach-corner bottom-right"></div>
+          
+          <div class="kbach-crest top-crest">
+            <div class="crest-embellishment">
+              <span class="crest-symbol">⚜</span>
+              <span class="crest-text">សិរីសួស្តីជ័យមង្គល</span>
+              <span class="crest-symbol">⚜</span>
+            </div>
+          </div>
+
+          <div class="kbach-crest bottom-crest">
+            <div class="crest-embellishment">
+              <span class="crest-subtext">ឃា &bull; កញ្ញា | ២០២៧</span>
+            </div>
+          </div>
+
+          <!-- Internal Photo Canvas with Floating Glow & Interactive Swiper -->
+          <div class="frame-inner-matting">
+            <div class="photo-viewport swiper frame-swiper" id="frameSwiper">
+              <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide frame-slide" data-slide="0">
+                  <img src="assets/images/couple_real_1.jpg" alt="រូបគូស្នេហ៍ស្នាមញញឹម ខាន់ ឃា &amp; សែម កញ្ញា" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">គូភរិយាស្វាមី សិរីមង្គល</span>
+                    <span class="tag-desc">ស្នាមញញឹមនៃក្តីស្រឡាញ់ដ៏បរិសុទ្ធ ឃា &amp; កញ្ញា</span>
+                  </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide frame-slide" data-slide="1">
+                  <img src="assets/images/hero_photo.jpg" alt="រូបថតមង្គលការពេញតួ ខាន់ ឃា &amp; សែម កញ្ញា" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">រូបថតមង្គលការពេញតួ</span>
+                    <span class="tag-desc">ខាន់ ឃា &bull; សែម កញ្ញា | សិរីសួស្តី អាពាហ៍ពិពាហ៍</span>
+                  </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide frame-slide" data-slide="2">
+                  <img src="assets/images/couple_real_2.jpg" alt="គ្រាដ៏មានន័យ" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">គ្រាដ៏មានអត្ថន័យនៃគូជីវិត</span>
+                    <span class="tag-desc">ក្តីសង្ឃឹម និងសុភមង្គលនៃគ្រួសារថ្មី</span>
+                  </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="swiper-slide frame-slide" data-slide="3">
+                  <img src="assets/images/couple_real_4.jpg" alt="ក្តីស្រឡាញ់ផ្អែមល្ហែម" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">អនុស្សាវរីយ៍ផ្អែមល្ហែម</span>
+                    <span class="tag-desc">ស្រឡាញ់គ្នារហូតដល់ចាស់កោងខ្នង ត្រជាក់ត្រជុំ</span>
+                  </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="swiper-slide frame-slide" data-slide="4">
+                  <img src="assets/images/couple_real_5.jpg" alt="ចំណងនិស្ស័យ" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">ចំណងនិស្ស័យគូព្រេងព្រលឹង</span>
+                    <span class="tag-desc">ខាន់ ឃា &bull; សែម កញ្ញា | សិរីសួស្តី ជ័យមង្គល</span>
+                  </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="swiper-slide frame-slide" data-slide="5">
+                  <img src="assets/images/couple_real_6.jpg" alt="ថ្ងៃជ័យមង្គល" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">ថ្ងៃជ័យមង្គលដ៏ពិសិដ្ឋ</span>
+                    <span class="tag-desc">១៩ កុម្ភៈ ២០២៧ | គេហដ្ឋានកូនក្រមុំ ខេត្តតាកែវ</span>
+                  </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="swiper-slide frame-slide" data-slide="6">
+                  <img src="assets/images/couple_real_7.jpg" alt="ស្នាមញញឹមរំភើប" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">ស្នាមញញឹមរំភើប និងក្តីស្រឡាញ់</span>
+                    <span class="tag-desc">ខាន់ ឃា &bull; សែម កញ្ញា | Happy Wedding</span>
+                  </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="swiper-slide frame-slide" data-slide="7">
+                  <img src="assets/images/couple_real_8.jpg" alt="កម្រងរូបថតអនុស្សាវរីយ៍" class="master-couple-image">
+                  <div class="photo-overlay-vignette"></div>
+                  <div class="photo-caption-tag">
+                    <span class="tag-title">កម្រងរូបថតអនុស្សាវរីយ៍ពិធីការ</span>
+                    <span class="tag-desc">ខាន់ ឃា &bull; សែម កញ្ញា | អាពាហ៍ពិពាហ៍ប្រពៃណី</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Swiper Pagination indicator dots -->
+              <div class="swiper-pagination frame-pagination" id="framePagination"></div>
+            </div>
+          </div>
+
+          <!-- Subtle Golden Frame Bevel Accent Lines -->
+          <div class="frame-filigree-inner"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Couple Profiles Section (កូនកំលោះ និង កូនក្រមុំ) -->
+  <section class="couple-profiles-section" id="couple">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <div class="kbach-divider-center">
+          <span class="kbach-wing left"></span>
+          <span class="kbach-gem">❖</span>
+          <span class="kbach-wing right"></span>
+        </div>
+        <h2 class="section-title">កូនកំលោះ និង កូនក្រមុំ</h2>
+        <p class="section-subtitle">The Groom & The Bride</p>
+      </div>
+
+      <div class="couple-cards-grid">
+        <!-- Groom Card with Khmer Frame -->
+        <div class="couple-profile-card">
+          <div class="card-khmer-frame">
+            <div class="frame-corner c-tl"></div>
+            <div class="frame-corner c-tr"></div>
+            <div class="frame-corner c-bl"></div>
+            <div class="frame-corner c-br"></div>
+            
+            <div class="profile-avatar-wrap">
+              <img src="assets/images/couple_real_7.jpg" alt="កូនកំលោះ ខាន់ ឃា" class="avatar-img">
+            </div>
+          </div>
+
+          <div class="card-content">
+            <div class="profile-role-badge">កូនប្រុស (The Groom)</div>
+            <h3 class="profile-name">ខាន់ ឃា</h3>
+            <p class="profile-en-name">KHANH KHEA</p>
+            
+            <div class="parents-lineage">
+              <p class="parent-label">ជាបុត្ររបស់៖</p>
+              <p class="parent-names">លោកឪពុក <strong>សុិន ឃាង</strong></p>
+              <p class="parent-names">អ្នកម្តាយ <strong>សុខ សោកន</strong></p>
+              <p class="parent-address">📍 ភូមិនគរ សង្កាត់គោខ្ចក ស្រុកកំពង់ត្របែក ខេត្តព្រៃវែង</p>
+            </div>
+
+            <p class="profile-bio">
+              « ស្រឡាញ់ និងផ្តល់តម្លៃដល់អូនគ្រប់ដង្ហើមចេញចូល រួមដំណើរជីវិតជាមួយគ្នាបង្កើតគ្រួសារមួយប្រកបដោយសុភមង្គល និងភាពកក់ក្តៅជារៀងរហូត »
+            </p>
+          </div>
+        </div>
+
+        <!-- Center Sacred Love Knot -->
+        <div class="couple-center-symbol">
+          <div class="sacred-ring">
+            <span class="knot-icon">💍</span>
+            <span class="knot-text">គូព្រេង គូនិស្ស័យ</span>
+          </div>
+        </div>
+
+        <!-- Bride Card with Khmer Frame -->
+        <div class="couple-profile-card">
+          <div class="card-khmer-frame">
+            <div class="frame-corner c-tl"></div>
+            <div class="frame-corner c-tr"></div>
+            <div class="frame-corner c-bl"></div>
+            <div class="frame-corner c-br"></div>
+            
+            <div class="profile-avatar-wrap">
+              <img src="assets/images/couple_real_8.jpg" alt="កូនក្រមុំ សែម កញ្ញា" class="avatar-img">
+            </div>
+          </div>
+
+          <div class="card-content">
+            <div class="profile-role-badge bride-badge">កូនស្រី (The Bride)</div>
+            <h3 class="profile-name">សែម កញ្ញា</h3>
+            <p class="profile-en-name">SEM KANHA</p>
+            
+            <div class="parents-lineage">
+              <p class="parent-label">ជាបុត្រីរបស់៖</p>
+              <p class="parent-names">លោកឪពុក <strong>សែម ស៊ុក</strong></p>
+              <p class="parent-names">អ្នកម្តាយ <strong>មាស សារ៉ន</strong></p>
+              <p class="parent-address">📍 ភូមិក្នុង សង្កាត់រកាក្នុង ក្រុងដូនកែវ ខេត្តតាកែវ</p>
+            </div>
+
+            <p class="profile-bio">
+              « ជ្រើសរើសបងជាដៃគូជីវិត ឆ្លងកាត់រាល់ឧបសគ្គដោយក្តីញញឹម ផ្ញើវាសនាលើទ្រូងបង និងរួមគ្នាថែរក្សាក្តីស្រឡាញ់ដ៏បរិសុទ្ធនេះជានិច្ចនិរន្តរ៍ »
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Showcase Section -->
+  <section class="wedding-gallery-section" id="gallery">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <div class="kbach-divider-center">
+          <span class="kbach-wing left"></span>
+          <span class="kbach-gem">❖</span>
+          <span class="kbach-wing right"></span>
+        </div>
+        <h2 class="section-title">កម្រងរូបថតអនុស្សាវរីយ៍</h2>
+        <p class="section-subtitle">Wedding Album & Gallery</p>
+        <p class="section-desc">
+          ផ្ទាំងទស្សនីយភាពរូបថតមង្គលការរបស់គូស្វាមីភរិយា ខាន់ ឃា &bull; សែម កញ្ញា
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item large" onclick="openPhotoModal('assets/images/hero_photo.jpg', 'រូបថតមង្គលការពេញតួ ឃា &amp; កញ្ញា')">
+          <img src="assets/images/hero_photo.jpg" alt="រូបថតមង្គលការ ឃា និង កញ្ញា" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <span class="hover-icon">🔍</span>
+            <span class="hover-text">ទស្សនារូបភាពធំ</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_1.jpg', 'ស្នាមញញឹមនៃក្តីស្រឡាញ់')">
+          <img src="assets/images/couple_real_1.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <span class="hover-icon">🔍</span>
+            <span class="hover-text">ទស្សនារូបភាពធំ</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_2.jpg', 'គ្រាដ៏មានអត្ថន័យ')">
+          <img src="assets/images/couple_real_2.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <span class="hover-icon">🔍</span>
+            <span class="hover-text">ទស្សនារូបភាពធំ</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_3.jpg', 'ទិដ្ឋភាពអនុស្សាវរីយ៍ផ្អែមល្ហែម')">
+          <img src="assets/images/couple_real_3.jpg" alt="រូបគូស្នេហ៍ផ្អែមល្ហែម" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <span class="hover-icon">🔍</span>
+            <span class="hover-text">ទស្សនារូបភាពធំ</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_4.jpg', 'ក្តីស្រឡាញ់ជារៀងរហូត')">
+          <img src="assets/images/couple_real_4.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <span class="hover-icon">🔍</span>
+            <span class="hover-text">ទស្សនារូបភាពធំ</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_5.jpg', 'ចំណងនិស្ស័យគូព្រេង')">
+          <img src="assets/images/couple_real_5.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <span class="hover-icon">🔍</span>
+            <span class="hover-text">ទស្សនារូបភាពធំ</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_6.jpg', 'គូស្វាមីភរិយាសិរីមង្គល')">
+          <img src="assets/images/couple_real_6.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
+          <div class="gallery-hover-overlay">
+            <span class="hover-icon">🔍</span>
+            <span class="hover-text">ទស្សនារូបភាពធំ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Modal Lightbox -->
+  <div id="photoLightboxModal" class="photo-modal" onclick="closePhotoModal()">
+    <div class="photo-modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closePhotoModal()" aria-label="Close photo">✕</button>
+      <img id="lightboxImg" src="" alt="រូបថតធំ">
+      <div id="lightboxCaption" class="modal-caption"></div>
+    </div>
+  </div>
+
+  <!-- Traditional Ceremony Program Schedule -->
+  <section class="schedule-section" id="schedule">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <div class="kbach-divider-center">
+          <span class="kbach-wing left"></span>
+          <span class="kbach-gem">❖</span>
+          <span class="kbach-wing right"></span>
+        </div>
+        <h2 class="section-title">កម្មវិធីមង្គលការតាមប្រពៃណីខ្មែរ</h2>
+        <p class="section-subtitle">Traditional Khmer Wedding Ceremonies</p>
+        <p class="section-desc">
+          ពិធីមង្គលការប្រារព្ធឡើងតាមគន្លងប្រពៃណីដូនតាខ្មែរ ដើម្បីភាពត្រជាក់ត្រជុំ និងសិរីសួស្តី
+        </p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Item 1 -->
+        <div class="timeline-card">
+          <div class="timeline-time">
+            <span class="time-hour">០៧:០០ ព្រឹក</span>
+            <span class="time-en">07:00 AM</span>
+          </div>
+          <div class="timeline-icon-box">🌸</div>
+          <div class="timeline-info">
+            <h3 class="ceremony-title">ពិធីជួបជុំញាតិមិត្ត និងហែជំនូន (ហែកំណត់)</h3>
+            <p class="ceremony-desc">
+              ក្បួនហែជំនូនផ្លែឈើ និងគ្រឿងបណ្ណាការ ដឹកនាំដោយលោកមេបា ឪពុកម្តាយ ព្រមទាំងភ្ញៀវកិត្តិយសយ៉ាងអធិកអធមចូលកាន់គេហដ្ឋានកូនក្រមុំ។
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-card">
+          <div class="timeline-time">
+            <span class="time-hour">០៨:៣០ ព្រឹក</span>
+            <span class="time-en">08:30 AM</span>
+          </div>
+          <div class="timeline-icon-box">🕯️</div>
+          <div class="timeline-info">
+            <h3 class="ceremony-title">ពិធីសែនព្រេន និងសំពះផ្ទឹម</h3>
+            <p class="ceremony-desc">
+              ពិធីសំពះដូនតា ឧទ្ទិសកុសលសុំពរជ័យពីជីដូនជីតា និងញាតិការទាំងប្រាំពីរសន្តាន ដើម្បីផ្តល់ពរជ័យដល់កូនប្រុសកូនស្រី។
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-card highlight-ceremony">
+          <div class="timeline-time">
+            <span class="time-hour">០៩:៣០ ព្រឹក</span>
+            <span class="time-en">09:30 AM</span>
+          </div>
+          <div class="timeline-icon-box">✂️</div>
+          <div class="timeline-info">
+            <h3 class="ceremony-title">ពិធីកាត់សក់បង្កក់សិរី (ទេវតាចុះកាត់សក់)</h3>
+            <p class="ceremony-desc">
+              តំណាងទេវតា និងទេវបុត្រ រួមជាមួយលោកអាចារ្យ ជួយកាត់សក់ និងប្រសិទ្ធពរជ័យ លាងជម្រះឧបទ្រពចង្រៃ បង្កើតនូវសិរីមង្គល និងភាពស្រស់បំព្រង។
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-card highlight-ceremony">
+          <div class="timeline-time">
+            <span class="time-hour">១០:៣០ ព្រឹក</span>
+            <span class="time-en">10:30 AM</span>
+          </div>
+          <div class="timeline-icon-box">🪷</div>
+          <div class="timeline-info">
+            <h3 class="ceremony-title">ពិធីបង្វិលពពិល និងសែនចងដៃ (បាចផ្កាស្លា)</h3>
+            <p class="ceremony-desc">
+              ពិធីបង្វិលពពិលប្រាំពីរសន្លឹកជាតំណាងភ្នំព្រះសុមេរុ និងការចងអំបោះក្រហមប្រសិទ្ធពរជ័យពីសាច់ញាតិមិត្តភក្តិ ជូនគូស្វាមីភរិយាថ្មី។
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="timeline-card banquet-card">
+          <div class="timeline-time">
+            <span class="time-hour">០៥:៣០ ល្ងាច</span>
+            <span class="time-en">05:30 PM</span>
+          </div>
+          <div class="timeline-icon-box">🥂</div>
+          <div class="timeline-info">
+            <h3 class="ceremony-title">ពិធីទទួលទានភោជនាហារ និងរាំកម្សាន្ត (Banquet Reception)</h3>
+            <p class="ceremony-desc">
+              ទទួលស្វាគមន៍ភ្ញៀវកិត្តិយស ពិសាអាហារយ៉ាងឆ្ងាញ់ពិសា កាត់នំខេកមង្គលការ និងរាំកម្សាន្តបទប្រពៃណីខ្មែររហូតដល់ចប់កម្មវិធី។
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Map Section -->
+  <section class="location-section" id="location">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <div class="kbach-divider-center">
+          <span class="kbach-wing left"></span>
+          <span class="kbach-gem">❖</span>
+          <span class="kbach-wing right"></span>
+        </div>
+        <h2 class="section-title">ទីតាំងប្រារព្ធពិធី</h2>
+        <p class="section-subtitle">Venue & Location Details</p>
+      </div>
+
+      <div class="location-content-box">
+        <div class="venue-card">
+          <div class="venue-badge">គេហដ្ឋានប្រារព្ធពិធី (ខាងស្រី)</div>
+          <h3 class="venue-name">គេហដ្ឋានកូនក្រមុំ ខេត្តតាកែវ</h3>
+          <p class="venue-name-en">Bride's Residence &bull; Takeo Province</p>
+          
+          <div class="venue-detail-item">
+            <span class="detail-icon">📍</span>
+            <div class="detail-text">
+              <strong>អាសយដ្ឋានកម្មវិធី៖</strong> ភូមិក្នុង សង្កាត់រកាក្នុង ក្រុងដូនកែវ ខេត្តតាកែវ
+            </div>
+          </div>
+
+          <div class="venue-detail-item">
+            <span class="detail-icon">📞</span>
+            <div class="detail-text">
+              <strong>ទំនាក់ទំនងព័ត៌មានបន្ថែម៖</strong> 096 948 7849 / 097 8458 854
+            </div>
+          </div>
+
+          <div class="venue-detail-item">
+            <span class="detail-icon">🚗</span>
+            <div class="detail-text">
+              <strong>ចំណតយានយន្ត៖</strong> មានទីធ្លាចំណតរថយន្ត និងម៉ូតូយ៉ាងធំទូលាយ មានសុវត្ថិភាព
+            </div>
+          </div>
+
+          <div class="venue-actions">
+            <a href="https://maps.app.goo.gl/zPjjmQUj1bLoRJWL7?g_st=ipc" target="_blank" rel="noopener noreferrer" class="btn-action-gold" id="btnGoogleMaps">
+              <span>📍 បើកមើលទីតាំងលើ Google Maps</span>
+            </a>
+            <button class="btn-action-outline" id="btnAddToCalendar">
+              <span>📅 រក្សាទុកក្នុងប្រតិទិន (Save Date)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Embedded Map Visual Card -->
+        <div class="map-visual-card">
+          <div class="map-mockup-frame">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15655.452093539824!2d104.7865248!3d10.9882956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31097699628740bb%3A0xf96da7116147d93a!2z4Z6F4Z-S4Z6F4Z-E4Z6c4Z-L4Z6a4Z-G4Z674Z-A!5e0!3m2!1sen!2skh!4v1700000000000!5m2!1sen!2skh" 
+              width="100%" 
+              height="380" 
+              style="border:0; border-radius: 12px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Khmer Wedding Venue Map Takeo">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP & Attendance Section -->
+  <section class="rsvp-section" id="rsvp">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <div class="kbach-divider-center">
+          <span class="kbach-wing left"></span>
+          <span class="kbach-gem">❖</span>
+          <span class="kbach-wing right"></span>
+        </div>
+        <h2 class="section-title">ឆ្លើយតបការអញ្ជើញ (RSVP)</h2>
+        <p class="section-subtitle">Confirm Your Attendance</p>
+        <p class="section-desc">
+          វត្តមានដ៏ខ្ពង់ខ្ពស់របស់លោកអ្នក គឺជាកិត្តិយសដ៏ធំធេងសម្រាប់គ្រួសារយើងខ្ញុំទាំងសងខាង
+        </p>
+      </div>
+
+      <div class="rsvp-card-wrapper">
+        <form class="rsvp-form" id="rsvpForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guestName">គោត្តនាម និងនាម / ឈ្មោះភ្ញៀវកិត្តិយស <span class="required">*</span></label>
+              <input type="text" id="guestName" name="guestName" placeholder="ឧ. លោក សុខ ចាន់ដារ៉ា" required>
+            </div>
+            <div class="form-group">
+              <label for="guestPhone">លេខទូរស័ព្ទ / តេឡេក្រាម <span class="required">*</span></label>
+              <input type="tel" id="guestPhone" name="guestPhone" placeholder="ឧ. 012 345 678" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guestCount">ចំនួនអ្នកចូលរួម</label>
+              <select id="guestCount" name="guestCount">
+                <option value="1">១ នាក់ (1 Person)</option>
+                <option value="2" selected>២ នាក់ (2 Persons)</option>
+                <option value="3">៣ នាក់ (3 Persons)</option>
+                <option value="4+">៤ នាក់ឡើងទៅ (Family 4+)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="attendanceStatus">លទ្ធភាពនៃការចូលរួម <span class="required">*</span></label>
+              <select id="attendanceStatus" name="attendanceStatus">
+                <option value="yes" selected>✅ រីករាយនឹងចូលរួម (Will Attend)</option>
+                <option value="uncertain">🤔 ប្រហែលជាអាចចូលរួម (Tentative)</option>
+                <option value="no">❌ សោកស្តាយ មិនអាចចូលរួមបាន (Cannot Attend)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="guestNote">ពាក្យផ្តាំផ្ញើបន្ថែម (ប្រសិនបើមាន)</label>
+            <textarea id="guestNote" name="guestNote" rows="2" placeholder="កំណត់សម្គាល់បន្ថែម..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-rsvp" id="btnSubmitRsvp">
+            <span>ផ្ញើការឆ្លើយតប (Submit RSVP)</span>
+          </button>
+          
+          <div class="form-feedback" id="rsvpFeedback" style="display: none;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wishes Guestbook Section (ពាក្យជូនពរ និងកត់ចំណងដៃ) -->
+  <section class="wishes-section" id="wishes">
+    <div class="section-container">
+      <div class="section-title-wrap">
+        <div class="kbach-divider-center">
+          <span class="kbach-wing left"></span>
+          <span class="kbach-gem">❖</span>
+          <span class="kbach-wing right"></span>
+        </div>
+        <h2 class="section-title">សៀវភៅពាក្យជូនពរជ័យ</h2>
+        <p class="section-subtitle">Wedding Blessings & Wishes Guestbook</p>
+        <p class="section-desc">
+          សូមផ្ញើសារជូនពរដល់គូស្វាមីភរិយា ខាន់ ឃា &bull; សែម កញ្ញា ដើម្បីជាសិរីមង្គល និងអនុស្សាវរីយ៍ដ៏មានតម្លៃ
+        </p>
+      </div>
+
+      <div class="wishes-layout">
+        <!-- Wish Submission Form -->
+        <div class="wish-form-card">
+          <h3 class="wish-card-title">✍️ ផ្ញើសារជូនពរគូស្នេហ៍</h3>
+          <form id="wishForm">
+            <div class="form-group">
+              <label for="wishSender">ឈ្មោះរបស់អ្នក (Your Name) <span class="required">*</span></label>
+              <input type="text" id="wishSender" placeholder="ឧ. មិត្តភក្តិ ឬ បងប្អូន..." required>
+            </div>
+            <div class="form-group">
+              <label for="wishRelationship">ទំនាក់ទំនង (Relationship)</label>
+              <select id="wishRelationship">
+                <option value="មិត្តភក្តិកូនកំលោះ">មិត្តភក្តិកូនកំលោះ (Groom's Friend)</option>
+                <option value="មិត្តភក្តិកូនក្រមុំ">មិត្តភក្តិកូនក្រមុំ (Bride's Friend)</option>
+                <option value="បងប្អូនសាច់ញាតិ">បងប្អូនសាច់ញាតិ (Relative / Family)</option>
+                <option value="រួមការងារ">មិត្តរួមការងារ (Colleague)</option>
+                <option value="ភ្ញៀវកិត្តិយស">ភ្ញៀវកិត្តិយស (Honored Guest)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="wishMessage">ខ្លឹមសារពាក្យជូនពរ (Blessing Message) <span class="required">*</span></label>
+              <textarea id="wishMessage" rows="3" placeholder="សូមជូនពរ ឃា &amp; កញ្ញា ទទួលបានសុភមង្គល ស្រឡាញ់គ្នារហូតដល់ចាស់កោងខ្នង រកស៊ីមានបាន ត្រជាក់ត្រជុំ..." required></textarea>
+            </div>
+
+            <!-- Quick Blessings Chips -->
+            <div class="quick-blessings">
+              <span class="chip-label">ពាក្យជូនពររហ័ស៖</span>
+              <button type="button" class="wish-chip" data-text="សូមជូនពរ ឃា &amp; កញ្ញា ឱ្យមានសុភមង្គល ស្រឡាញ់គ្នារហូតដល់ចាស់កោងខ្នង ត្រជាក់ត្រជុំជានិច្ច! 💖">💑 ស្រឡាញ់គ្នារហូតចាស់កោងខ្នង</button>
+              <button type="button" class="wish-chip" data-text="សិរីសួស្តី ជ័យមង្គល វិបុលសុខ រកទទួលទានមានបាន ជោគជ័យគ្រប់ភារកិច្ច! ✨">✨ សិរីសួស្តី ជ័យមង្គល</button>
+              <button type="button" class="wish-chip" data-text="សូមឱ្យគ្រួសារថ្មីរបស់ប្អូនទាំងពីរពោរពេញដោយស្នាមញញឹម សេចក្តីសុខ និងទទួលបានកូនឆាប់ៗ! 👶">🌸 សុខក្សេមក្សាន្ត ឆាប់បានកូនពូកែ</button>
+            </div>
+
+            <button type="submit" class="btn-royal-wish" id="btnPostWish">
+              <span>✨ បង្ហោះពាក្យជូនពរ (Post Wish)</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Live Wishes Wall -->
+        <div class="wishes-wall-container">
+          <div class="wishes-wall-header">
+            <h3 class="wall-title">💌 ពាក្យជូនពរពីភ្ញៀវកិត្តិយស (<span id="wishesCount">3</span>)</h3>
+          </div>
+          <div class="wishes-list" id="wishesList">
+            <!-- Dynamic wishes inserted via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="wedding-footer">
+    <div class="footer-kbach-top"></div>
+    <div class="footer-container">
+      <div class="footer-monogram">ឃ &bull; ក</div>
+      <h3 class="footer-names">ខាន់ ឃា &amp; សែម កញ្ញា</h3>
+      <p class="footer-date">ថ្ងៃសុក្រ ទី១៩ ខែកុម្ភៈ ឆ្នាំ២០២៧ | ភូមិក្នុង សង្កាត់រកាក្នុង ក្រុងដូនកែវ ខេត្តតាកែវ</p>
+      <div class="footer-blessing">
+        « សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅចំពោះវត្តមាន និងពាក្យជូនពរដ៏ថ្លៃថ្លារបស់លោកអ្នក »
+      </div>
+      <p class="footer-copy">&copy; 2027 KHANH KHEA & SEM KANHA. All Rights Reserved. Crafted with Khmer Pride.</p>
+    </div>
+  </footer>
+
+  <!-- Modern Mobile Bottom Navigation Bar (សម្រាប់ទូរស័ព្ទដៃ) -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <a href="#hero" class="mob-nav-link active" data-section="hero">
+      <span class="mob-icon">🏰</span>
+      <span class="mob-text">ទំព័រដើម</span>
+    </a>
+    <a href="#couple" class="mob-nav-link" data-section="couple">
+      <span class="mob-icon">💑</span>
+      <span class="mob-text">គូស្នេហ៍</span>
+    </a>
+    <a href="#frames" class="mob-nav-link" data-section="frames">
+      <span class="mob-icon">🖼️</span>
+      <span class="mob-text">ស៊ុមខ្មែរ</span>
+    </a>
+    <a href="#gallery" class="mob-nav-link" data-section="gallery">
+      <span class="mob-icon">📸</span>
+      <span class="mob-text">រូបថត</span>
+    </a>
+    <a href="#schedule" class="mob-nav-link" data-section="schedule">
+      <span class="mob-icon">🗓️</span>
+      <span class="mob-text">កម្មវិធី</span>
+    </a>
+    <a href="#location" class="mob-nav-link" data-section="location">
+      <span class="mob-icon">📍</span>
+      <span class="mob-text">ទីតាំង</span>
+    </a>
+    <a href="#rsvp" class="mob-nav-link mob-rsvp-accent" data-section="rsvp">
+      <span class="mob-icon">💌</span>
+      <span class="mob-text">ចូលរួម</span>
+    </a>
+    <button id="musicToggleBtn" class="mob-nav-link mob-music-btn" aria-label="Toggle Traditional Music" style="background: none; border: none; cursor: pointer; color: inherit;">
+      <span class="mob-icon" id="musicIcon">🎵</span>
+      <span class="mob-text music-text">ភ្លេងការ</span>
+    </button>
+  </nav>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
