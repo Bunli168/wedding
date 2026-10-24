@@ -337,6 +337,7 @@ a {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: var(--bg-primary);
 }
 
 .hero-swiper .slide-bg {
@@ -344,8 +345,8 @@ a {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center 29%;
+  background-size: contain;
+  background-position: center 30px;
   background-repeat: no-repeat;
   transform: scale(1);
   transition: transform 6.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -368,6 +369,55 @@ a {
       rgba(18, 4, 10, 0.92) 85%,
       rgba(18, 4, 10, 0.98) 100%);
   pointer-events: none;
+}
+
+/* ==========================================================================
+   Fixed Royal Khmer Arch Page Frame (homeFrame.jpg) - Persistent Across Page
+   ========================================================================== */
+.page-fixed-frame {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 990;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-fixed-frame-img {
+  position: absolute;
+  top: -4.5%;
+  left: -8.5%;
+  width: 117%;
+  height: 107%;
+  object-fit: fill;
+  pointer-events: none;
+  display: block;
+}
+
+/* Hide fixed frame while opening envelope screen */
+body.envelope-active .page-fixed-frame {
+  display: none !important;
+}
+
+@media (min-width: 769px) {
+  .page-fixed-frame {
+    max-width: 580px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .page-fixed-frame-img {
+    top: -3%;
+    left: -6%;
+    width: 112%;
+    height: 105%;
+  }
 }
 
 /* Floating Slide Caption Tag */
@@ -530,8 +580,8 @@ a {
   }
 
   .hero-slide-counter {
-    bottom: 0.8rem;
-    left: 1.2rem;
+    bottom: 0.95rem;
+    left: max(1.5rem, 9.5%);
     padding: 0.25rem 0.75rem;
   }
 
@@ -2750,14 +2800,16 @@ body.envelope-active .floating-music-btn {
   }
 
   .floating-music-btn {
-    bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px));
-    right: 1.2rem;
+    bottom: calc(1.1rem + env(safe-area-inset-bottom, 0px));
+    right: 1.25rem;
     width: 44px;
     height: 44px;
   }
 
   .section-container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+    max-width: 100%;
   }
 
   .khmer-frame-showcase-section,
@@ -3039,12 +3091,14 @@ body.envelope-active .floating-music-btn {
   }
 
   .hero-swiper .slide-bg {
-    background-position: center 12% !important;
+    background-size: contain !important;
+    background-position: center 35px !important;
+    background-repeat: no-repeat !important;
   }
 
   .hero-content {
     min-height: auto;
-    padding: 0 0.5rem 0.6rem;
+    padding: 0 1.25rem 0.8rem;
     justify-content: flex-end;
     margin-top: auto;
   }
@@ -3082,9 +3136,12 @@ body.envelope-active .floating-music-btn {
   }
 
   .hero-date-badge {
-    padding: 0.35rem 0.9rem;
-    font-size: 0.82rem;
-    gap: 6px;
+    padding: 0.3rem 0.85rem;
+    font-size: clamp(0.68rem, 2.9vw, 0.82rem);
+    white-space: nowrap;
+    max-width: 90%;
+    margin: 0 auto 0.4rem;
+    gap: 5px;
   }
 
   .date-en {
@@ -3136,6 +3193,11 @@ body.envelope-active .floating-music-btn {
     font-size: 0.82rem;
     justify-content: center;
     text-align: center;
+  }
+
+  .framed-couple-stage {
+    max-width: min(390px, 90vw);
+    margin: 0 auto;
   }
 
   .khmer-royal-graphic-frame {
