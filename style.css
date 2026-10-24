@@ -928,10 +928,10 @@ body.envelope-active .page-fixed-frame {
 
 .graphic-frame-inner-viewport {
   position: absolute;
-  left: 9.9%;
-  top: 3.75%;
-  width: 81.8%;
-  height: 92.4%;
+  left: 8.97%;
+  top: 8.33%;
+  width: 83.71%;
+  height: 83.06%;
   z-index: 2;
   overflow: hidden;
   background-color: #170409;
