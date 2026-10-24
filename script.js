@@ -189,19 +189,29 @@ function initParticlesCanvas() {
         this.twinklePhase = Math.random() * Math.PI * 2;
       } else {
         // Khmer Plumeria Flower Blossom (ផ្កាចំប៉ី/ផ្កាចម្ប៉ា)
-        // 90% single blossoms, 10% small cluster
-        const isCluster = Math.random() < 0.12;
-        this.img = isCluster ? flowerImgs[3] : flowerImgs[Math.floor(Math.random() * 3)];
+        const flowerIdx = Math.floor(Math.random() * 3);
+        const isCluster = Math.random() < 0.05; // Rare small cluster
+        this.img = isCluster ? flowerImgs[3] : flowerImgs[flowerIdx];
         
-        const baseSize = isMobile ? 18 : 24;
-        this.size = baseSize + Math.random() * (isCluster ? 28 : 20);
-        this.speedY = 0.6 + Math.random() * 0.9;
-        this.swaySpeed = 0.008 + Math.random() * 0.014;
-        this.swayAmp = 0.7 + Math.random() * 1.1;
+        // Delicate, graceful flower petal sizing (ជួយបន្ថយទំហំផ្កាចំប៉ីឱ្យតូចសមរម្យ)
+        // Mobile: 8px to 14px, Desktop: 11px to 18px
+        const baseSize = isMobile ? 8 : 11;
+        const sizeVariance = isMobile ? 5 : 7;
+        let s = baseSize + Math.random() * sizeVariance;
+        if (isCluster) {
+          s *= 1.25;
+        } else if (flowerIdx === 1 || flowerIdx === 2) {
+          // flower_blossom_2.png and flower_blossom_3.png extra graceful scale
+          s *= 0.88;
+        }
+        this.size = s;
+        this.speedY = 0.45 + Math.random() * 0.7;
+        this.swaySpeed = 0.007 + Math.random() * 0.012;
+        this.swayAmp = 0.6 + Math.random() * 0.9;
         this.swayPhase = Math.random() * Math.PI * 2;
         this.rotation = Math.random() * Math.PI * 2;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.016;
-        this.opacity = 0.75 + Math.random() * 0.22;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.012;
+        this.opacity = 0.6 + Math.random() * 0.28;
       }
     }
 
@@ -239,7 +249,10 @@ function initParticlesCanvas() {
         ctx.rotate(this.rotation);
         ctx.globalAlpha = this.opacity;
         if (this.img && this.img.complete && this.img.naturalWidth > 0) {
-          ctx.drawImage(this.img, -this.size / 2, -this.size / 2, this.size, this.size);
+          const aspect = this.img.naturalWidth / this.img.naturalHeight;
+          const drawW = aspect >= 1 ? this.size : this.size * aspect;
+          const drawH = aspect >= 1 ? this.size / aspect : this.size;
+          ctx.drawImage(this.img, -drawW / 2, -drawH / 2, drawW, drawH);
         }
       }
 
@@ -330,7 +343,8 @@ function initTraditionalAudio() {
     if (playing) {
       if (musicBtn) {
         musicBtn.classList.add('playing');
-        musicBtn.querySelector('.music-text').textContent = 'បិទភ្លេង';
+        const textEl = musicBtn.querySelector('.music-text');
+        if (textEl) textEl.textContent = 'បិទភ្លេង';
       }
       if (musicIcon) musicIcon.textContent = '🎶';
       if (floatingPill) floatingPill.classList.add('playing');
@@ -338,7 +352,8 @@ function initTraditionalAudio() {
     } else {
       if (musicBtn) {
         musicBtn.classList.remove('playing');
-        musicBtn.querySelector('.music-text').textContent = 'ភ្លេងការ';
+        const textEl = musicBtn.querySelector('.music-text');
+        if (textEl) textEl.textContent = 'ភ្លេងការ';
       }
       if (musicIcon) musicIcon.textContent = '🎵';
       if (floatingPill) floatingPill.classList.remove('playing');

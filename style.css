@@ -2413,20 +2413,89 @@ body.envelope-active {
    Mobile Bottom Navigation & Complete Mobile Responsiveness Overhaul
    ========================================================================== */
 
-/* Desktop Default: Hide Mobile Bottom Nav */
+/* Desktop Default: Completely Remove Mobile Bottom Nav */
 .mobile-bottom-nav {
   display: none !important;
+}
+
+/* Floating Traditional Wedding Music Control (ប៊ូតុងចាក់/បិទភ្លេងការ) */
+.floating-music-btn {
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  right: 1.5rem;
+  z-index: 998;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(30, 6, 16, 0.85);
+  border: 1.5px solid var(--gold-400);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.4s ease;
+  color: var(--gold-300);
+  padding: 0;
+}
+
+body.envelope-active .floating-music-btn {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.floating-music-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 18px rgba(212, 175, 55, 0.55);
+  border-color: #fef08a;
+}
+
+.floating-music-btn .music-disc-spin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.floating-music-btn.playing .music-disc-spin {
+  animation: musicDiscRotate 4.5s linear infinite;
+}
+
+@keyframes musicDiscRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 /* Tablet & Mobile Screens (<= 768px) */
 @media (max-width: 768px) {
   html {
     scroll-padding-top: 4rem;
-    scroll-padding-bottom: 5rem;
   }
 
   body {
     padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .floating-music-btn {
+    bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px));
+    right: 1.2rem;
+    width: 44px;
+    height: 44px;
   }
 
   .section-container {
@@ -2497,80 +2566,10 @@ body.envelope-active {
   }
 
   /* ----------------------------------------------------
-     2. Modern Mobile Bottom Navigation Bar (Fixed Bottom)
+     2. Mobile Bottom Navigation Bar Completely Removed
      ---------------------------------------------------- */
   .mobile-bottom-nav {
-    display: flex !important;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    align-items: center;
-    justify-content: space-around;
-    background: rgba(22, 5, 12, 0.94);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1.5px solid rgba(212, 175, 55, 0.45);
-    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.15);
-    padding: 0.4rem 0.2rem calc(0.45rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  .mob-nav-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: var(--cream-300);
-    flex: 1;
-    padding: 0.2rem 0;
-    transition: var(--transition-smooth);
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .mob-icon {
-    font-size: 1.15rem;
-    margin-bottom: 2px;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .mob-text {
-    font-family: var(--font-royal);
-    font-size: 0.68rem;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-  }
-
-  .mob-nav-link:active,
-  .mob-nav-link.active {
-    color: #fef08a;
-    transform: translateY(-2px);
-  }
-
-  .mob-nav-link.active .mob-icon {
-    transform: scale(1.18);
-    filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.85));
-  }
-
-  .mob-nav-link.mob-rsvp-accent {
-    color: #fde68a;
-  }
-
-  .mob-nav-link.mob-rsvp-accent .mob-icon {
-    animation: bounceIcon 1.8s infinite;
-  }
-
-  /* ----------------------------------------------------
-     3. Floating Music Pill (Positioned Above Bottom Bar)
-     ---------------------------------------------------- */
-  .floating-music-pill {
-    bottom: calc(4.4rem + env(safe-area-inset-bottom, 0px));
-    right: 0.85rem;
-    padding: 0.35rem 0.75rem 0.35rem 0.45rem;
-    gap: 8px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 12px rgba(212, 175, 55, 0.4);
+    display: none !important;
   }
 
   .pill-disc {
