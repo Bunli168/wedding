@@ -269,16 +269,31 @@ function initParticlesCanvas() {
 function initEnvelopeOpening() {
   const overlay = document.getElementById('envelopeOverlay');
   const btnOpen = document.getElementById('btnOpenEnvelope');
+  const waxSeal = document.getElementById('waxSeal');
   const audioEl = document.getElementById('weddingAudio');
 
-  if (!btnOpen || !overlay) return;
+  if (!overlay) return;
 
-  btnOpen.addEventListener('click', () => {
+  function triggerOpenAndMusic() {
     // 1. Play Traditional Wedding Song automatically
     if (audioEl) {
-      audioEl.play().catch(err => {
-        console.log('Audio play error:', err);
-      });
+      audioEl.volume = 1.0;
+      const playPromise = audioEl.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.log('Autoplay deferred until further user gesture:', err);
+          // Fallback: unlock on next user gesture (tap/scroll/click)
+          const unlockAudio = () => {
+            if (audioEl.paused) {
+              audioEl.play().catch(() => {});
+            }
+            document.removeEventListener('click', unlockAudio);
+            document.removeEventListener('touchstart', unlockAudio);
+          };
+          document.addEventListener('click', unlockAudio, { once: true });
+          document.addEventListener('touchstart', unlockAudio, { once: true });
+        });
+      }
     }
 
     // 2. Animate envelope opening transition
@@ -287,7 +302,15 @@ function initEnvelopeOpening() {
 
     // 3. Smooth scroll to top of hero page
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  }
+
+  if (btnOpen) {
+    btnOpen.addEventListener('click', triggerOpenAndMusic);
+  }
+  if (waxSeal) {
+    waxSeal.style.cursor = 'pointer';
+    waxSeal.addEventListener('click', triggerOpenAndMusic);
+  }
 }
 
 /* ==========================================================================
