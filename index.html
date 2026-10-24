@@ -18,10 +18,13 @@
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-  <link rel="stylesheet" href="style.css?v=2.8">
+  <link rel="stylesheet" href="style.css?v=3.5">
 </head>
 
 <body class="envelope-active">
+
+  <!-- Royal Gold Reading / Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
 
   <!-- Wedding Envelope Opening Screen (Landing Screen) -->
   <div class="wedding-envelope-overlay" id="envelopeOverlay">
@@ -232,12 +235,6 @@
             <span class="count-label">វិនាទី</span>
           </div>
         </div>
-
-        <!-- Minimal Smooth Scroll Prompt -->
-        <a href="#frames" class="hero-scroll-pill">
-          <span>ទស្សនាស៊ុមរូបថត</span>
-          <span class="arrow-bounce">▼</span>
-        </a>
       </div>
     </div>
   </section>
@@ -388,7 +385,7 @@
             <div class="frame-corner c-br"></div>
 
             <div class="profile-avatar-wrap">
-              <img src="assets/images/couple_real_8.jpg" alt="កូនក្រមុំ សែម កញ្ញា" class="avatar-img">
+              <img src="assets/images/couple_real_4.jpg" alt="កូនក្រមុំ សែម កញ្ញា" class="avatar-img">
             </div>
           </div>
 
@@ -431,51 +428,49 @@
       </div>
 
       <div class="gallery-grid">
-        <div class="gallery-item large"
-          onclick="openPhotoModal('assets/images/hero_photo.jpg', 'រូបថតមង្គលការពេញតួ ឃា &amp; កញ្ញា')">
+        <div class="gallery-item large" onclick="openPhotoModal(0)">
           <img src="assets/images/hero_photo.jpg" alt="រូបថតមង្គលការ ឃា និង កញ្ញា" loading="lazy">
           <div class="gallery-hover-overlay">
             <span class="hover-icon">🔍</span>
             <span class="hover-text">ទស្សនារូបភាពធំ</span>
           </div>
         </div>
-        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_1.jpg', 'ស្នាមញញឹមនៃក្តីស្រឡាញ់')">
+        <div class="gallery-item" onclick="openPhotoModal(1)">
           <img src="assets/images/couple_real_1.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
           <div class="gallery-hover-overlay">
             <span class="hover-icon">🔍</span>
             <span class="hover-text">ទស្សនារូបភាពធំ</span>
           </div>
         </div>
-        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_2.jpg', 'គ្រាដ៏មានអត្ថន័យ')">
+        <div class="gallery-item" onclick="openPhotoModal(2)">
           <img src="assets/images/couple_real_2.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
           <div class="gallery-hover-overlay">
             <span class="hover-icon">🔍</span>
             <span class="hover-text">ទស្សនារូបភាពធំ</span>
           </div>
         </div>
-        <div class="gallery-item"
-          onclick="openPhotoModal('assets/images/couple_real_3.jpg', 'ទិដ្ឋភាពអនុស្សាវរីយ៍ផ្អែមល្ហែម')">
+        <div class="gallery-item" onclick="openPhotoModal(3)">
           <img src="assets/images/couple_real_3.jpg" alt="រូបគូស្នេហ៍ផ្អែមល្ហែម" loading="lazy">
           <div class="gallery-hover-overlay">
             <span class="hover-icon">🔍</span>
             <span class="hover-text">ទស្សនារូបភាពធំ</span>
           </div>
         </div>
-        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_4.jpg', 'ក្តីស្រឡាញ់ជារៀងរហូត')">
+        <div class="gallery-item" onclick="openPhotoModal(4)">
           <img src="assets/images/couple_real_4.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
           <div class="gallery-hover-overlay">
             <span class="hover-icon">🔍</span>
             <span class="hover-text">ទស្សនារូបភាពធំ</span>
           </div>
         </div>
-        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_5.jpg', 'ចំណងនិស្ស័យគូព្រេង')">
+        <div class="gallery-item" onclick="openPhotoModal(5)">
           <img src="assets/images/couple_real_5.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
           <div class="gallery-hover-overlay">
             <span class="hover-icon">🔍</span>
             <span class="hover-text">ទស្សនារូបភាពធំ</span>
           </div>
         </div>
-        <div class="gallery-item" onclick="openPhotoModal('assets/images/couple_real_6.jpg', 'គូស្វាមីភរិយាសិរីមង្គល')">
+        <div class="gallery-item" onclick="openPhotoModal(6)">
           <img src="assets/images/couple_real_6.jpg" alt="រូបគូស្នេហ៍" loading="lazy">
           <div class="gallery-hover-overlay">
             <span class="hover-icon">🔍</span>
@@ -486,12 +481,39 @@
     </div>
   </section>
 
-  <!-- Photo Modal Lightbox -->
+  <!-- Photo Modal Lightbox with Full Next/Previous Navigation -->
   <div id="photoLightboxModal" class="photo-modal" onclick="closePhotoModal()">
     <div class="photo-modal-content" onclick="event.stopPropagation()">
       <button class="modal-close-btn" onclick="closePhotoModal()" aria-label="Close photo">✕</button>
-      <img id="lightboxImg" src="" alt="រូបថតធំ">
+
+      <!-- Top Photo Counter -->
+      <div class="modal-top-bar">
+        <span class="modal-photo-counter" id="modalPhotoCounter">01 / 07</span>
+      </div>
+
+      <!-- Main Image & Navigation Arrows -->
+      <div class="modal-image-container">
+        <button class="modal-nav-btn prev-btn" id="modalPrevBtn" onclick="prevPhotoModal(event)"
+          aria-label="Previous Photo" title="រូបមុន (Previous)">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <img id="lightboxImg" src="" alt="រូបថតធំ" onclick="nextPhotoModal(event)" title="ចុចលើរូបដើម្បីទៅរូបបន្ទាប់">
+
+        <button class="modal-nav-btn next-btn" id="modalNextBtn" onclick="nextPhotoModal(event)" aria-label="Next Photo"
+          title="រូបបន្ទាប់ (Next)">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
       <div id="lightboxCaption" class="modal-caption"></div>
+      <div class="modal-nav-hint">
+        <span>‹ អូសលើរូប ឬ ចុចព្រួញដើម្បីប្តូររូបថត ›</span>
+      </div>
     </div>
   </div>
 
@@ -812,7 +834,7 @@
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js?v=2.8"></script>
+  <script src="script.js?v=3.5"></script>
 </body>
 
 </html>
