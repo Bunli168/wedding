@@ -442,7 +442,7 @@ function initEnvelopeOpening() {
 }
 
 /* ==========================================================================
-   5. Traditional Khmer Wedding Audio Player (សូរិយាលិចហើយ - សុត សាវុធ)
+   5. Traditional Khmer Wedding Audio Player (ជំនោររសាយ ទឹកហូរលាន់ឡុង - សុត សាវុធ)
    ========================================================================== */
 function initTraditionalAudio() {
   const audioEl = document.getElementById('weddingAudio');
