@@ -2394,8 +2394,8 @@ body.envelope-active {
 }
 
 .wax-seal-badge {
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #ffd700, #b8860b 70%, #5c3a03 100%);
   border: 2px solid #fff2a3;
@@ -2403,9 +2403,11 @@ body.envelope-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto -28px;
+  margin: 0.15rem auto 0.75rem;
   position: relative;
   z-index: 20;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   animation: sealPulse 2.2s ease-in-out infinite;
 }
 
@@ -2428,59 +2430,37 @@ body.envelope-active {
   }
 }
 
-/* Envelope Paper Card */
+/* Envelope Paper Card with Authentic Khmer Arch Frame (heroFrame.jpg) */
 .envelope-card {
   background: linear-gradient(145deg, #fefcf9 0%, #f6efe2 100%);
   color: #380711;
   border-radius: 20px;
-  padding: 2.4rem 1.8rem 2rem;
+  padding: 0;
   box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.8),
     0 8px 25px rgba(0, 0, 0, 0.4),
     0 0 40px rgba(212, 175, 55, 0.35);
   position: relative;
-  border: 3px solid #d4af37;
+  overflow: hidden;
+  border: none;
 }
 
-/* Corner Kbach Motifs on Envelope */
-.env-corner {
+/* Real Ornate Arch Graphic Frame Overlay (heroFrame.jpg) */
+.env-frame-graphic {
   position: absolute;
-  width: 38px;
-  height: 38px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
   pointer-events: none;
-  background: radial-gradient(circle at 10px 10px, #d4af37 2px, transparent 3px),
-    linear-gradient(45deg, #d4af37 0%, #8c670f 100%);
-  clip-path: polygon(0 0, 100% 0, 75% 25%, 25% 25%, 25% 75%, 0 100%);
-  opacity: 0.85;
-}
-
-.env-corner.tl {
-  top: 8px;
-  left: 8px;
-}
-
-.env-corner.tr {
-  top: 8px;
-  right: 8px;
-  transform: scaleX(-1);
-}
-
-.env-corner.bl {
-  bottom: 8px;
-  left: 8px;
-  transform: scaleY(-1);
-}
-
-.env-corner.br {
-  bottom: 8px;
-  right: 8px;
-  transform: scale(-1, -1);
+  z-index: 5;
 }
 
 .env-inner-border {
-  border: 1.5px dashed rgba(160, 110, 30, 0.4);
-  border-radius: 12px;
-  padding: 1.6rem 1.2rem;
+  position: relative;
+  z-index: 6;
+  border: none;
+  padding: 3.8rem 2.2rem 2.4rem;
   text-align: center;
 }
 
@@ -2590,31 +2570,49 @@ body.envelope-active {
 
 .env-action-wrap {
   margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .btn-open-envelope {
   position: relative;
-  background: linear-gradient(135deg, #9f1239 0%, #580a18 100%);
-  color: #fff;
-  border: 2px solid #d4af37;
-  padding: 0.85rem 2.4rem;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  padding: 0.8rem 1.8rem;
   border-radius: var(--radius-full);
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  box-shadow: 0 8px 25px rgba(159, 18, 57, 0.55), 0 0 20px rgba(212, 175, 55, 0.4);
+  width: auto;
+  min-width: 200px;
+  max-width: 280px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 12px rgba(254, 240, 138, 0.5);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .btn-open-envelope:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 12px 30px rgba(159, 18, 57, 0.75), 0 0 25px rgba(212, 175, 55, 0.65);
-  border-color: #fef08a;
+  transform: translateY(-2px) scale(1.05);
+  color: #fef08a !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 16px rgba(255, 215, 0, 0.9);
+}
+
+.btn-open-envelope:active {
+  transform: scale(0.96);
 }
 
 .env-btn-icon {
@@ -2635,13 +2633,7 @@ body.envelope-active {
 }
 
 .env-btn-shine {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: btnShine 2.5s infinite;
+  display: none !important;
 }
 
 @keyframes btnShine {
@@ -2857,60 +2849,114 @@ body.envelope-active .floating-music-btn {
      4. Wedding Envelope Landing Screen
      ---------------------------------------------------- */
   .wedding-envelope-overlay {
-    padding: 0.85rem;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw;
     height: 100dvh;
     max-height: 100dvh;
-    overflow-y: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
   }
 
   .envelope-card-container {
-    max-width: 100%;
-    margin: auto 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    margin: 0 !important;
+    animation: none !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    position: relative;
   }
 
   .envelope-card {
-    padding: 1.8rem 1.1rem 1.5rem;
-    border-radius: 16px;
-    border-width: 2.5px;
+    width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
   }
 
-  .env-corner {
-    width: 28px;
-    height: 28px;
+  .env-frame-graphic {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .wax-seal-badge {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0.15rem auto 0.45rem !important;
+    z-index: 10;
+    width: 44px !important;
+    height: 44px !important;
+    cursor: pointer;
+  }
+
+  .wax-seal-icon {
+    font-size: 1.2rem;
   }
 
   .env-inner-border {
-    padding: 1.25rem 0.75rem;
-    border-radius: 10px;
+    position: relative;
+    z-index: 6;
+    height: 100%;
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: max(4.5rem, 9.5vh) 12% max(1.6rem, 3.2vh);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    border: none;
+    overflow: hidden;
   }
 
   .env-top-motif {
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.25rem;
   }
 
   .motif-line {
-    width: 32px;
+    width: 30px;
   }
 
   .env-royal-badge {
-    font-size: 0.88rem;
+    font-size: clamp(0.82rem, 3.8vw, 0.95rem);
+    white-space: nowrap;
   }
 
   .env-en-sub {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     letter-spacing: 1.5px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
   }
 
   .env-couple-monogram {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     font-size: 1rem;
-    margin-bottom: 0.6rem;
+    margin: 0.15rem auto 0.4rem;
   }
 
   .env-couple-title {
-    font-size: clamp(1.35rem, 5.5vw, 1.7rem);
+    font-size: clamp(1.3rem, 5.2vw, 1.65rem);
     gap: 6px;
     margin-bottom: 0.15rem;
   }
@@ -2920,42 +2966,56 @@ body.envelope-active .floating-music-btn {
   }
 
   .env-en-names {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     letter-spacing: 2px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.45rem;
   }
 
   .env-invitation-text {
-    font-size: 0.85rem;
+    font-size: clamp(0.78rem, 3.4vw, 0.86rem);
     line-height: 1.6;
-    margin-bottom: 0.9rem;
+    max-width: 270px;
+    margin: 0 auto 0.5rem;
   }
 
   .env-date-pill {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     padding: 0.35rem 0.85rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.6rem;
+    white-space: nowrap;
+  }
+
+  .env-action-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.2rem;
   }
 
   .btn-open-envelope {
-    width: 100%;
+    width: auto !important;
+    min-width: 180px !important;
+    max-width: 250px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
     justify-content: center;
-    padding: 0.8rem 1.4rem;
-    font-size: 1rem;
+    padding: 0.65rem 1.2rem !important;
+    font-size: 1rem !important;
+    margin: 0 auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(254, 240, 138, 0.5) !important;
   }
 
   .env-music-hint {
-    font-size: 0.75rem;
-  }
-
-  .wax-seal-badge {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto -25px;
-  }
-
-  .wax-seal-icon {
-    font-size: 1.25rem;
+    font-size: 0.72rem;
+    margin-top: 0.45rem;
   }
 
   /* ----------------------------------------------------
@@ -3453,11 +3513,12 @@ body.envelope-active .floating-music-btn {
   }
 
   .envelope-card {
-    padding: 1.4rem 0.8rem 1.2rem;
+    padding: 0 !important;
+    height: 100dvh !important;
   }
 
   .env-inner-border {
-    padding: 1rem 0.5rem;
+    padding: max(3.8rem, 8vh) 10% max(1.2rem, 2.5vh) !important;
   }
 
   .env-couple-monogram {
@@ -3586,7 +3647,6 @@ body.envelope-active .floating-music-btn {
 .btn-action-gold,
 .btn-submit-rsvp,
 .btn-royal-wish,
-.btn-open-envelope,
 .gold-shimmer-sweep {
   position: relative;
   overflow: hidden !important;
@@ -3595,7 +3655,6 @@ body.envelope-active .floating-music-btn {
 .btn-action-gold::after,
 .btn-submit-rsvp::after,
 .btn-royal-wish::after,
-.btn-open-envelope::after,
 .gold-shimmer-sweep::after {
   content: '';
   position: absolute;
@@ -3752,7 +3811,6 @@ body.envelope-active .floating-music-btn {
   .btn-action-gold::after,
   .btn-submit-rsvp::after,
   .btn-royal-wish::after,
-  .btn-open-envelope::after,
   .kbach-gem,
   .motif-gem,
   .badge-gem,
