@@ -673,27 +673,27 @@ body.envelope-active .page-fixed-frame {
 .hero-header-badge .royal-text {
   font-family: var(--font-royal);
   color: #fef08a;
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .badge-gem {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .couple-hero-title {
   font-family: var(--font-royal);
-  font-size: clamp(2.1rem, 5.5vw, 3.8rem);
+  font-size: clamp(1.75rem, 4.5vw, 3.1rem);
   line-height: 1.2;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
   font-weight: 800;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.7rem;
+  gap: 0.55rem;
 }
 
 .name-groom,
@@ -709,17 +709,17 @@ body.envelope-active .page-fixed-frame {
 
 .heart-separator {
   color: #f43f5e;
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.85));
   animation: pulseKnot 2s infinite;
 }
 
 .hero-en-names {
   font-family: var(--font-display-en);
-  font-size: clamp(0.88rem, 1.8vw, 1.15rem);
-  letter-spacing: 4px;
+  font-size: clamp(0.78rem, 1.5vw, 0.98rem);
+  letter-spacing: 3.5px;
   color: #fef08a;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.35rem;
   font-weight: 700;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 0, 0, 0.9);
 }
@@ -765,10 +765,10 @@ body.envelope-active .page-fixed-frame {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.45rem;
   background: rgba(22, 5, 12, 0.7);
   border: 1.2px solid rgba(212, 175, 55, 0.5);
-  padding: 0.45rem 1.2rem;
+  padding: 0.32rem 0.95rem;
   border-radius: var(--radius-full);
   backdrop-filter: blur(12px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
@@ -777,25 +777,25 @@ body.envelope-active .page-fixed-frame {
 .countdown-unit {
   display: flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 3px;
 }
 
 .count-num {
   font-family: var(--font-display-en);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #fff9e6;
   text-shadow: 0 0 10px rgba(250, 204, 21, 0.7);
 }
 
 .count-label {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   color: var(--gold-300);
 }
 
 .count-divider {
   color: var(--gold-400);
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
@@ -3177,24 +3177,24 @@ body.envelope-active .floating-music-btn {
   }
 
   .hero-header-badge .royal-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .couple-hero-title {
-    font-size: clamp(1.8rem, 7.5vw, 2.6rem);
+    font-size: clamp(1.45rem, 5.8vw, 2.15rem);
     gap: 0.35rem;
     line-height: 1.25;
     margin-bottom: 0.2rem;
   }
 
   .heart-separator {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .hero-en-names {
-    font-size: 0.82rem;
+    font-size: 0.74rem;
     letter-spacing: 2px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.35rem;
   }
 
   .hero-date-badge {
@@ -3215,16 +3215,24 @@ body.envelope-active .floating-music-btn {
   }
 
   .countdown-container {
-    gap: 0.4rem;
-    padding: 0.35rem 0.9rem;
+    gap: 0.35rem;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .countdown-unit {
+    gap: 2.5px;
   }
 
   .count-num {
-    font-size: 1.2rem;
+    font-size: 0.98rem;
   }
 
   .count-label {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+  }
+
+  .count-divider {
+    font-size: 0.8rem;
   }
 
   .hero-scroll-pill {
@@ -3613,11 +3621,11 @@ body.envelope-active .floating-music-btn {
 
 @media (max-width: 420px) {
   .couple-hero-title {
-    font-size: 1.7rem;
+    font-size: 1.35rem;
   }
 
   .hero-header-badge .royal-text {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
   }
 
   .floating-music-pill .pill-info {
@@ -3634,15 +3642,20 @@ body.envelope-active .floating-music-btn {
   }
 
   .countdown-unit {
-    padding: 0.4rem 0.15rem;
+    padding: 0.1rem 0.05rem;
+    gap: 2px;
   }
 
   .count-num {
-    font-size: 1.25rem;
+    font-size: 0.88rem;
   }
 
   .count-label {
-    font-size: 0.58rem;
+    font-size: 0.52rem;
+  }
+
+  .count-divider {
+    font-size: 0.75rem;
   }
 
   .envelope-card {
