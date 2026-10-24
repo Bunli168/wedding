@@ -3951,6 +3951,300 @@ body.envelope-active .floating-music-btn {
   transform: scale(0.94);
 }
 
+/* ==========================================================================
+   PWA & Add to Homescreen Styles
+   ========================================================================== */
+.floating-install-btn {
+  position: fixed;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  left: 1.5rem;
+  z-index: 998;
+  height: 48px;
+  padding: 0 16px 0 14px;
+  border-radius: 28px;
+  background: rgba(14, 30, 22, 0.9);
+  border: 1.5px solid var(--gold-400);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), 0 0 14px rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.4s ease, border-color 0.25s ease;
+  color: var(--gold-300);
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+body.envelope-active .floating-install-btn {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.floating-install-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(212, 175, 55, 0.55);
+  border-color: #fef08a;
+  color: #fff;
+}
+
+.floating-install-btn .install-btn-icon {
+  font-size: 1.15rem;
+  display: inline-flex;
+  animation: pulseIcon 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+@media (max-width: 480px) {
+  .floating-install-btn {
+    padding: 0 12px;
+    height: 44px;
+    font-size: 0.8rem;
+    left: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Footer Install Button */
+.footer-install-wrap {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-footer-install {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(197, 154, 63, 0.22) 0%, rgba(245, 215, 110, 0.12) 100%);
+  border: 1.5px solid var(--gold-400);
+  color: #fef08a;
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-footer-install:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(197, 154, 63, 0.35) 0%, rgba(245, 215, 110, 0.2) 100%);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6), 0 0 22px rgba(212, 175, 55, 0.4);
+  color: #ffffff;
+}
+
+/* PWA Instruction Modal */
+.pwa-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(3, 10, 7, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+}
+
+.pwa-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.pwa-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: linear-gradient(165deg, #0e2419 0%, #06150e 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.65);
+  border-radius: 20px;
+  padding: 24px 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.25);
+  color: #f7faf5;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pwa-modal-overlay.active .pwa-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.pwa-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--gold-300);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pwa-modal-close:hover {
+  background: rgba(212, 175, 55, 0.2);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.pwa-modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pwa-app-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  padding: 3px;
+  background: linear-gradient(135deg, #d4af37, #fef08a, #aa7c11);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.pwa-app-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  display: block;
+}
+
+.pwa-modal-title {
+  font-family: 'Koh Santepheap', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fef08a;
+  margin: 0 0 6px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.pwa-modal-sub {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 0.88rem;
+  color: #d1d5db;
+  margin: 0;
+}
+
+.pwa-steps-list {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pwa-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #e5e7eb;
+}
+
+.pwa-step-badge {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37, #996515);
+  color: #06130d;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pwa-step-text strong {
+  color: #fef08a;
+}
+
+.pwa-step-icon-hl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  margin: 0 2px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.pwa-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pwa-btn-primary {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+  border: none;
+  color: #06130d;
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+  transition: all 0.25s ease;
+}
+
+.pwa-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.55);
+  background: linear-gradient(135deg, #fef08a 0%, #d4af37 100%);
+}
+
+.pwa-btn-secondary {
+  width: 100%;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d1d5db;
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pwa-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
 /* Accessibility: Respect Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
 

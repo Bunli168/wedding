@@ -18,7 +18,17 @@
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-  <link rel="stylesheet" href="style.css?v=6.0">
+  <!-- Progressive Web App (PWA) / Add to Home Screen -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#06130d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ឃា & កញ្ញា">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="style.css?v=6.1">
 </head>
 
 <body class="envelope-active">
@@ -89,9 +99,9 @@
 
   <!-- Top Header Removed per user request ('កុំheaderអី') -->
 
-  <!-- Real Audio Element for Traditional Khmer Wedding Song (ជំនោររសាយ ទឹកហូរលាន់ឡុង - សុត សាវុធ) -->
+  <!-- Real Audio Element for Traditional Khmer Wedding Song (សូរិយាលិចហើយ - សុត សាវុធ) -->
   <audio id="weddingAudio" preload="auto" loop playsinline webkit-playsinline>
-    <source src="assets/audio/wedding_music.m4a?v=2" type="audio/mp4">
+    <source src="assets/audio/wedding_music.m4a" type="audio/mp4">
   </audio>
 
 
@@ -254,15 +264,10 @@
                 </div>
 
 
-
-
                 <!-- Slide 4 -->
                 <div class="swiper-slide frame-slide" data-slide="3">
                   <img src="assets/images/couple_real_4.jpg" alt="ក្តីស្រឡាញ់ផ្អែមល្ហែម" class="master-couple-image">
                 </div>
-
-
-
 
                 <!-- Slide 7 -->
                 <div class="swiper-slide frame-slide" data-slide="6">
@@ -640,14 +645,53 @@
         « សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅចំពោះវត្តមាន និងពាក្យជូនពរដ៏ថ្លៃថ្លារបស់លោកអ្នក »
       </div>
 
+      <!-- Footer Add to Homescreen Button -->
+      <div class="footer-install-wrap">
+        <button class="btn-footer-install" id="footerInstallBtn" aria-label="Add to Home Screen">
+          <span>📲 ដាក់លើអេក្រង់ដើម (Add to Home Screen)</span>
+        </button>
+      </div>
+
     </div>
   </footer>
+
+  <!-- Floating Install Button (ប៊ូតុងដំឡើងលើអេក្រង់ទូរស័ព្ទអណ្តែតលើអេក្រង់) -->
+  <button id="pwaInstallBtn" class="floating-install-btn" aria-label="Add to Home Screen" title="ដំឡើងលើ Homescreen">
+    <span class="install-btn-icon">📲</span>
+    <span class="install-btn-label">ដាក់លើអេក្រង់</span>
+  </button>
 
   <!-- Floating Traditional Music Button (ប៊ូតុងចាក់/បិទភ្លេងការអណ្តែតលើអេក្រង់) -->
   <button id="musicToggleBtn" class="floating-music-btn" aria-label="Toggle Traditional Music" title="បិទ/ចាក់ភ្លេងការ">
     <span class="music-disc-spin" id="musicIcon">🎵</span>
     <span class="music-text sr-only">ភ្លេងការ</span>
   </button>
+
+  <!-- PWA Install Guide Modal for iOS & All Devices -->
+  <div id="pwaModal" class="pwa-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pwaModalTitle">
+    <div class="pwa-modal-card">
+      <button class="pwa-modal-close" id="pwaModalClose" aria-label="បិទផ្ទាំង">✕</button>
+      
+      <div class="pwa-modal-header">
+        <div class="pwa-app-icon-wrap">
+          <img src="assets/images/icon-192.png" alt="រូបតំណាងកម្មវិធី ឃា &amp; កញ្ញា" class="pwa-app-icon">
+        </div>
+        <h3 class="pwa-modal-title" id="pwaModalTitle">ដំឡើងលើអេក្រង់ទូរស័ព្ទ</h3>
+        <p class="pwa-modal-sub">សិរីសួស្តី អាពាហ៍ពិពាហ៍ | ឃា &amp; កញ្ញា</p>
+      </div>
+
+      <div class="pwa-steps-list" id="pwaStepsContainer">
+        <!-- Content will be dynamically inserted by script.js -->
+      </div>
+
+      <div class="pwa-modal-actions">
+        <button id="pwaNativeInstallBtn" class="pwa-btn-primary" style="display: none;">
+          <span>⚡ ចុចដំឡើងឥឡូវនេះ (Install App)</span>
+        </button>
+        <button id="pwaDismissBtn" class="pwa-btn-secondary">យល់ព្រម (OK)</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Fixed Royal Khmer Arch Frame for Entire Page (homeFrame.jpg) -->
   <div class="page-fixed-frame" id="pageFixedFrame" aria-hidden="true">
@@ -656,7 +700,8 @@
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js?v=3.9"></script>
+  <script src="script.js?v=4.0"></script>
+
 </body>
 
 </html>

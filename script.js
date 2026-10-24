@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollProgressBar();
   initScrollReveal();
   initInteractiveSacredRing();
+  initPWAInstall();
 });
 
 /* ==========================================================================
@@ -1009,4 +1010,194 @@ function initInteractiveSacredRing() {
     }
   });
 }
+
+/* ==========================================================================
+   13. PWA & Add to Home Screen (ដំឡើងលើ Homescreen)
+   ========================================================================== */
+function initPWAInstall() {
+  // Register Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => {
+          console.log('Wedding PWA Service Worker Registered:', reg.scope);
+        })
+        .catch((err) => {
+          console.warn('Wedding PWA Service Worker Registration Failed:', err);
+        });
+    });
+  }
+
+  let deferredPrompt = null;
+  const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+  const footerInstallBtn = document.getElementById('footerInstallBtn');
+  const pwaModal = document.getElementById('pwaModal');
+  const pwaModalClose = document.getElementById('pwaModalClose');
+  const pwaDismissBtn = document.getElementById('pwaDismissBtn');
+  const pwaNativeInstallBtn = document.getElementById('pwaNativeInstallBtn');
+  const pwaStepsContainer = document.getElementById('pwaStepsContainer');
+
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+
+  // Listen for beforeinstallprompt event (Android / Chrome / Edge)
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (pwaNativeInstallBtn) {
+      pwaNativeInstallBtn.style.display = 'block';
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    if (pwaNativeInstallBtn) {
+      pwaNativeInstallBtn.style.display = 'none';
+    }
+    closeModal();
+    if (pwaInstallBtn) {
+      pwaInstallBtn.innerHTML = '<span class="install-btn-icon">✅</span><span class="install-btn-label">បានដំឡើង</span>';
+    }
+    if (footerInstallBtn) {
+      footerInstallBtn.innerHTML = '<span>✅ បានដំឡើងលើអេក្រង់រួចរាល់</span>';
+    }
+  });
+
+  function openModal() {
+    renderSteps();
+    if (pwaModal) {
+      pwaModal.classList.add('active');
+      pwaModal.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  function closeModal() {
+    if (pwaModal) {
+      pwaModal.classList.remove('active');
+      pwaModal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function renderSteps() {
+    if (!pwaStepsContainer) return;
+
+    if (isStandalone) {
+      if (pwaNativeInstallBtn) pwaNativeInstallBtn.style.display = 'none';
+      pwaStepsContainer.innerHTML = `
+        <div class="pwa-step-item">
+          <div class="pwa-step-badge">✓</div>
+          <div class="pwa-step-text">
+            <strong>កម្មវិធីត្រូវបានដំឡើងរួចរាល់ហើយ!</strong><br>
+            លោកអ្នកកំពុងបើកមើលផ្ទាល់នៅលើអេក្រង់ទូរស័ព្ទ។ សូមអរគុណ!
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    if (isIOS) {
+      if (pwaNativeInstallBtn) pwaNativeInstallBtn.style.display = 'none';
+      pwaStepsContainer.innerHTML = `
+        <div class="pwa-step-item">
+          <div class="pwa-step-badge">១</div>
+          <div class="pwa-step-text">
+            ចុចលើប៊ូតុងចែករំលែក <span class="pwa-step-icon-hl">📤 Share</span> នៅរបារខាងក្រោមនៃ Safari។
+          </div>
+        </div>
+        <div class="pwa-step-item">
+          <div class="pwa-step-badge">២</div>
+          <div class="pwa-step-text">
+            អូសចុះក្រោមបន្តិច រួចជ្រើសរើស <span class="pwa-step-icon-hl">➕ បន្ថែមទៅអេក្រង់ដើម</span> (<strong>Add to Home Screen</strong>)។
+          </div>
+        </div>
+        <div class="pwa-step-item">
+          <div class="pwa-step-badge">៣</div>
+          <div class="pwa-step-text">
+            ចុច <span class="pwa-step-icon-hl"><strong>បន្ថែម (Add)</strong></span> នៅជ្រុងខាងស្តាំខាងលើជាការស្រេច!
+          </div>
+        </div>
+      `;
+    } else {
+      // Android / Chrome / Edge
+      if (deferredPrompt && pwaNativeInstallBtn) {
+        pwaNativeInstallBtn.style.display = 'block';
+      }
+      pwaStepsContainer.innerHTML = `
+        <div class="pwa-step-item">
+          <div class="pwa-step-badge">១</div>
+          <div class="pwa-step-text">
+            ចុចប៊ូតុង <strong>«ចុចដំឡើងឥឡូវនេះ»</strong> ខាងក្រោម ឬចុចសញ្ញាចុចបី <span class="pwa-step-icon-hl">⋮</span> នៅជ្រុងខាងលើស្តាំនៃ Chrome។
+          </div>
+        </div>
+        <div class="pwa-step-item">
+          <div class="pwa-step-badge">២</div>
+          <div class="pwa-step-text">
+            ជ្រើសរើស <span class="pwa-step-icon-hl">📲 ដំឡើងកម្មវិធី</span> (<strong>Install App</strong>) ឬ <strong>Add to Home screen</strong>។
+          </div>
+        </div>
+        <div class="pwa-step-item">
+          <div class="pwa-step-badge">៣</div>
+          <div class="pwa-step-text">
+            ចុច <strong>ដំឡើង (Install)</strong> ដើម្បីដាក់កម្មវិធីផ្ទាល់លើអេក្រង់ទូរស័ព្ទ។
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  function handleInstallClick() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the PWA install prompt');
+          closeModal();
+        }
+        deferredPrompt = null;
+      });
+    } else {
+      openModal();
+    }
+  }
+
+  if (pwaInstallBtn) {
+    pwaInstallBtn.addEventListener('click', handleInstallClick);
+  }
+
+  if (footerInstallBtn) {
+    footerInstallBtn.addEventListener('click', handleInstallClick);
+  }
+
+  if (pwaNativeInstallBtn) {
+    pwaNativeInstallBtn.addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the PWA install prompt');
+            closeModal();
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+  }
+
+  if (pwaModalClose) {
+    pwaModalClose.addEventListener('click', closeModal);
+  }
+
+  if (pwaDismissBtn) {
+    pwaDismissBtn.addEventListener('click', closeModal);
+  }
+
+  if (pwaModal) {
+    pwaModal.addEventListener('click', (e) => {
+      if (e.target === pwaModal) {
+        closeModal();
+      }
+    });
+  }
+}
+
 

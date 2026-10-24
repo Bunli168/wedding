@@ -1,0 +1,31 @@
+{
+  "name": "សិរីសួស្តី អាពាហ៍ពិពាហ៍ | ឃា & កញ្ញា",
+  "short_name": "ឃា & កញ្ញា",
+  "description": "លិខិតអញ្ជើញសិរីមង្គលអាពាហ៍ពិពាហ៍ ខាន់ ឃា & សែម កញ្ញា",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#06130d",
+  "theme_color": "#c59a3f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
