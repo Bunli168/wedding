@@ -2509,13 +2509,13 @@ body.envelope-active {
 
 .env-inner-border {
   position: absolute;
-  top: 0;
+  top: 4%;
   left: 0;
   right: 0;
-  bottom: 23.5%;
+  bottom: 21.5%;
   z-index: 6;
   border: none;
-  padding: max(4.2rem, 9.5vh) 10% 0.5rem;
+  padding: max(5.8rem, 15vh) 10% 0.5rem;
   box-sizing: border-box;
   text-align: center;
   display: flex;
@@ -3021,15 +3021,15 @@ body.envelope-active .floating-music-btn {
 
   .env-inner-border {
     position: absolute;
-    top: 0;
+    top: 4%;
     left: 0;
     right: 0;
-    bottom: 23.5%;
+    bottom: 21.5%;
     z-index: 6;
     height: auto;
     max-height: none;
     box-sizing: border-box;
-    padding: max(4.5rem, 11.5vh) 10% 0.35rem;
+    padding: max(6rem, 16vh) 10% 0.35rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -3651,8 +3651,9 @@ body.envelope-active .floating-music-btn {
   }
 
   .env-inner-border {
-    padding: max(3.8rem, 9vh) 9% 0.25rem !important;
-    bottom: 23.5% !important;
+    padding: max(4.6rem, 12vh) 9% 0.3rem !important;
+    bottom: 22% !important;
+    top: 3% !important;
   }
 
   .wax-seal-badge {
