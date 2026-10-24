@@ -2460,7 +2460,7 @@ body.envelope-active {
   position: relative;
   z-index: 6;
   border: none;
-  padding: 3.8rem 2.2rem 2.4rem;
+  padding: 4.8rem 2.2rem 3rem;
   text-align: center;
 }
 
@@ -2569,7 +2569,8 @@ body.envelope-active {
 }
 
 .env-action-wrap {
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2919,7 +2920,7 @@ body.envelope-active .floating-music-btn {
     height: 100%;
     height: 100dvh;
     box-sizing: border-box;
-    padding: max(4.5rem, 9.5vh) 12% max(1.6rem, 3.2vh);
+    padding: max(5.2rem, 11.5vh) 12% max(3.6rem, 8vh);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -2991,7 +2992,8 @@ body.envelope-active .floating-music-btn {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 0.2rem;
+    margin-top: 0;
+    margin-bottom: 0.35rem !important;
   }
 
   .btn-open-envelope {
@@ -3518,13 +3520,18 @@ body.envelope-active .floating-music-btn {
   }
 
   .env-inner-border {
-    padding: max(3.8rem, 8vh) 10% max(1.2rem, 2.5vh) !important;
+    padding: max(4.2rem, 9.5vh) 10% max(2.5rem, 5.5vh) !important;
   }
 
+  .wax-seal-badge,
   .env-couple-monogram {
-    width: 40px;
-    height: 40px;
-    font-size: 0.95rem;
+    width: 38px !important;
+    height: 38px !important;
+    margin: 0.1rem auto 0.35rem !important;
+  }
+
+  .wax-seal-icon {
+    font-size: 1rem !important;
   }
 
   .mob-text {
