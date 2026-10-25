@@ -1,9 +1,9 @@
-const CACHE_NAME = 'wedding-khea-kanha-v1';
+const CACHE_NAME = 'wedding-khea-kanha-v5';
 
 const PRECACHE_URLS = [
   './',
   './index.html',
-  './style.css?v=6.6',
+  './style.css?v=6.9',
   './script.js?v=4.2',
   './manifest.webmanifest',
   './assets/images/favicon.png',
@@ -46,6 +46,22 @@ self.addEventListener('fetch', (event) => {
   // Only handle GET requests and skip range requests (like audio stream) for direct network
   if (event.request.method !== 'GET') return;
   if (event.request.headers.get('range')) return;
+
+  // Network-first for HTML pages so user always sees latest version on refresh
+  if (event.request.mode === 'navigate' || event.request.destination === 'document') {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
