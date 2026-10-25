@@ -1,9 +1,9 @@
-const CACHE_NAME = 'wedding-khea-kanha-v5';
+const CACHE_NAME = 'wedding-khea-kanha-v7';
 
 const PRECACHE_URLS = [
   './',
   './index.html',
-  './style.css?v=6.9',
+  './style.css?v=7.1',
   './script.js?v=4.2',
   './manifest.webmanifest',
   './assets/images/favicon.png',

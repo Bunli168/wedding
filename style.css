@@ -943,10 +943,10 @@ body.envelope-active .page-fixed-frame {
 
 .graphic-frame-inner-viewport {
   position: absolute;
-  left: 5.5%;
-  top: 1.5%;
-  width: 89%;
-  height: 96.5%;
+  top: 9.6%;
+  left: 11.3%;
+  width: 78.9%;
+  height: 80.2%;
   z-index: 2;
   overflow: hidden;
   background-color: #170409;
@@ -1970,66 +1970,189 @@ body.envelope-active .page-fixed-frame {
 }
 
 /* ==========================================================================
-   Footer
+   Footer - Royal Khmer Wedding Celebration
    ========================================================================== */
 .wedding-footer {
-  background: #0a0305;
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
-  padding: 4rem 1.5rem 2.5rem;
+  background: radial-gradient(ellipse at 50% 0%, rgba(95, 14, 30, 0.5) 0%, rgba(35, 15, 23, 0.94) 45%, #150307 100%);
+  border-top: none;
+  padding: 4.5rem 1.5rem calc(6.5rem + env(safe-area-inset-bottom, 0px));
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+.footer-kbach-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, 88%);
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.2) 15%, #d4af37 50%, rgba(212, 175, 55, 0.2) 85%, transparent 100%);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.footer-kbach-top::after {
+  content: '❖';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #230f17;
+  padding: 0 12px;
+  color: var(--gold-400);
+  font-size: 0.95rem;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.85);
 }
 
 .footer-container {
-  max-width: 700px;
+  max-width: 500px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .footer-monogram {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1.25rem;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.2rem;
   border-radius: 50%;
-  border: 2px solid var(--gold-500);
-  background: var(--burgundy-900);
+  border: 2px solid var(--gold-400);
+  background: radial-gradient(circle at 35% 35%, #5e0d1d 0%, #2b050d 75%, #150206 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.45), inset 0 0 12px rgba(212, 175, 55, 0.35);
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.footer-monogram:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.7), inset 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.monogram-symbol {
   font-family: var(--font-royal);
   font-size: 1.2rem;
-  color: var(--gold-300);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  font-weight: 700;
+  color: var(--gold-200);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.9);
+  letter-spacing: 2px;
 }
 
 .footer-names {
   font-family: var(--font-royal);
-  font-size: 1.8rem;
+  font-size: 1.75rem;
+  font-weight: 700;
   background: var(--gold-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7));
+  line-height: 1.35;
 }
 
-.footer-date {
-  font-size: 0.95rem;
+.footer-names-en {
+  font-family: var(--font-royal);
+  font-size: 0.82rem;
+  letter-spacing: 2.5px;
   color: var(--gold-400);
-  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+  opacity: 0.92;
 }
 
-.footer-blessing {
-  font-size: 1.05rem;
-  color: var(--cream-200);
-  font-style: normal;
+.footer-date-pill {
+  font-size: 0.88rem;
+  color: var(--cream-100);
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.footer-date-icon {
+  font-size: 0.95rem;
+}
+
+.footer-blessing-card {
+  width: 100%;
+  background: linear-gradient(145deg, rgba(62, 16, 28, 0.75) 0%, rgba(29, 6, 12, 0.88) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.3rem 1.35rem;
   margin-bottom: 2rem;
-  line-height: 1.8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 235, 170, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.footer-blessing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--gold-300);
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.5px;
+  background: rgba(212, 175, 55, 0.12);
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.footer-blessing-quote {
+  font-size: 0.96rem;
+  line-height: 1.85;
+  color: #fff9eb;
+  margin-bottom: 0.85rem;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.footer-blessing-sub {
+  font-size: 0.82rem;
+  color: var(--gold-300);
+  line-height: 1.65;
+  opacity: 0.95;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+  padding-top: 1.35rem;
+  width: 100%;
 }
 
 .footer-copy {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--cream-muted);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 1.5rem;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.6px;
+}
+
+.footer-crafted {
+  font-size: 0.74rem;
+  color: var(--gold-400);
+  opacity: 0.88;
 }
 
 /* ==========================================================================
@@ -3849,24 +3972,55 @@ body.envelope-active .floating-music-btn {
      13. Footer
      ---------------------------------------------------- */
   .wedding-footer {
-    padding: 3rem 1rem calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    padding: 3rem 1rem calc(6.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .footer-monogram {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 1rem;
+  }
+
+  .monogram-symbol {
+    font-size: 1.05rem;
   }
 
   .footer-names {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
   }
 
-  .footer-date {
-    font-size: 0.82rem;
+  .footer-names-en {
+    font-size: 0.76rem;
+    letter-spacing: 2px;
   }
 
-  .footer-blessing {
-    font-size: 0.82rem;
-    padding: 0 0.5rem;
+  .footer-date-pill {
+    font-size: 0.8rem;
+    padding: 0.32rem 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-blessing-card {
+    padding: 1.25rem 0.95rem 1.15rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .footer-blessing-quote {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-blessing-sub {
+    font-size: 0.76rem;
   }
 
   .footer-copy {
     font-size: 0.72rem;
+  }
+
+  .footer-crafted {
+    font-size: 0.68rem;
   }
 }
 
