@@ -4618,3 +4618,25 @@ body.envelope-active .floating-music-btn {
     animation: none !important;
   }
 }
+
+/* ========================================================
+   Hide Netlify Badge / Feedback Drawer / Edge Injection
+   ======================================================== */
+iframe[src*="netlify"],
+iframe[id*="netlify"],
+iframe[class*="netlify"],
+div[id*="netlify"],
+div[class*="netlify-badge"],
+[data-netlify-deploy-id],
+netlify-drawer,
+#netlify-drawer,
+.netlify-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  z-index: -99999 !important;
+}
