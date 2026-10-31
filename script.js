@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  killNetlifyBadge();
   initEnvelopeOpening();
   initHeroSwiper();
   initCountdown();
@@ -19,6 +20,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractiveSacredRing();
   initPWAInstall();
 });
+
+// Remove Netlify HUD / Badge from DOM
+function killNetlifyBadge() {
+  const removeHud = () => {
+    const el = document.getElementById('nl-badge-frame') ||
+               document.getElementById('nl-hud-frame') ||
+               document.querySelector('iframe[title*="Netlify"]') ||
+               document.querySelector('iframe[src*="netlify"]');
+    if (el) {
+      el.remove();
+    }
+  };
+  removeHud();
+  const obs = new MutationObserver(() => removeHud());
+  obs.observe(document.documentElement, { childList: true, subtree: true });
+}
 
 /* ==========================================================================
    0. Hero Banner Swiper / Slider

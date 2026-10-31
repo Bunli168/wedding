@@ -4620,17 +4620,15 @@ body.envelope-active .floating-music-btn {
 }
 
 /* ========================================================
-   Hide Netlify Badge / Feedback Drawer / Edge Injection
+   Hide Netlify Badge / HUD / Edge Injection
    ======================================================== */
+#nl-badge-frame,
+#nl-hud-frame,
+iframe[id^="nl-"],
+iframe[title*="Netlify"],
 iframe[src*="netlify"],
-iframe[id*="netlify"],
-iframe[class*="netlify"],
-div[id*="netlify"],
-div[class*="netlify-badge"],
-[data-netlify-deploy-id],
-netlify-drawer,
-#netlify-drawer,
-.netlify-badge {
+[data-nf-variant],
+[data-netlify-site-id] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -4638,5 +4636,9 @@ netlify-drawer,
   width: 0 !important;
   height: 0 !important;
   position: absolute !important;
-  z-index: -99999 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(100%) !important;
+  z-index: -999999 !important;
+  transform: scale(0) !important;
 }
+
